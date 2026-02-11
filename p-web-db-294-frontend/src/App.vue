@@ -9,6 +9,7 @@ import SearchBar from './components/SearchBar.vue';
     <header style="grid-area: header;">
         <nav>
           <RouterLink to="/">L&CloseCurlyQuote;0ctet Littéraire</RouterLink>
+          <span></span>
           <RouterLink to="/about">Ouvrages</RouterLink>
         </nav>
         <SearchBar></SearchBar>
@@ -32,7 +33,7 @@ import SearchBar from './components/SearchBar.vue';
     'top-svg top-svg top-svg'
     'main    main    main' auto
     'bot-svg bot-svg bot-svg'
-    'footer  footer  footer'
+    'footer  footer  footer' 4rem
     / 2fr 8fr 2fr;
     place-items: start center;
   }
@@ -42,13 +43,14 @@ import SearchBar from './components/SearchBar.vue';
     width: 100%;
     height: 100%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
 
     background: var(--secondary);
     border: 4px solid var(--main);
     box-sizing: border-box;
 
+    gap: 1rem;
     & > nav {
       display: flex;
       gap: 1rem;
@@ -59,6 +61,10 @@ import SearchBar from './components/SearchBar.vue';
 
       & a:hover {
         text-decoration: underline;
+      }
+
+      & span::after {
+        content: '○';
       }
     }
   }
