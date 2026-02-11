@@ -18,15 +18,10 @@ import SearchBar from './components/SearchBar.vue'
     <main style="grid-area: main">
       <RouterView />
     </main>
-    <<<<<<< Updated upstream
     <img class="svg bot" style="grid-area: bot-svg" src="./assets/waves-bot.svg" alt="" />
     <footer style="grid-area: footer">
       <p>&copy; L&CloseCurlyQuote;0ctet Littéraire</p>
     </footer>
-    =======
-    <img class="svg bot" style="grid-area: bot-svg" src="./assets/waves-bot.svg" alt="" />
-    <footer style="grid-area: footer"></footer>
-    >>>>>>> Stashed changes
   </div>
 </template>
 

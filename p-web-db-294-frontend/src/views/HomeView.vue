@@ -19,8 +19,8 @@ onMounted(() => {
   <main v-if="book">
     <h1>L'0ctet littéraire</h1>
     <h2>Book name : {{ book.titre }}</h2>
-    <p style="font-family: JetBrainsMono;">test</p>
-    <p style="font-family: JetBrainsMono-bold;">test</p>
-    <p style="font-family: JetBrainsMono-ExtraBold;">test</p>
+    <p style="font-family: JetBrainsMono">test</p>
+    <p style="font-family: JetBrainsMono-bold">test</p>
+    <p style="font-family: JetBrainsMono-ExtraBold">test</p>
   </main>
 </template>
