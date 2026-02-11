@@ -1,0 +1,46 @@
+{
+  "ouvrages": [
+    {
+      "id": 1,
+      "titre": "Le Petit Prince",
+      "categorie": "roman",
+      "nbPages": 96,
+      "extrait": "/extraits/petit-prince.pdf",
+      "resume": "Un conte poétique et philosophique...",
+      "auteur": {
+        "nom": "Saint-Exupéry",
+        "prenom": "Antoine"
+      },
+      "editeur": "Gallimard",
+      "anneeEdition": 1943,
+      "imageCouverture": "/images/petit-prince.jpg"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "pseudo": "booklover92",
+      "dateEntree": "2024-01-15",
+      "nbOuvragesProposes": 2,
+      "nbAppreciations": 5,
+      "nbCommentaires": 3
+    }
+  ],
+  "appreciations": [
+    {
+      "id": 1,
+      "ouvrageId": 1,
+      "userId": 1,
+      "note": 5
+    }
+  ],
+  "commentaires": [
+    {
+      "id": 1,
+      "ouvrageId": 1,
+      "userId": 1,
+      "contenu": "Magnifique œuvre !",
+      "date": "2025-02-10"
+    }
+  ]
+}
