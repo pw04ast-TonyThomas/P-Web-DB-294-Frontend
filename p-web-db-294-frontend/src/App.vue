@@ -40,6 +40,12 @@ import SearchBar from './components/SearchBar.vue'
   place-items: start center;
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 header {
   place-self: center;
   width: 100%;
@@ -88,5 +94,12 @@ footer {
   color: #ffffff;
   padding: 1rem;
   box-sizing: border-box;
+}
+
+h1 {
+  font-weight: bolder;
+  font-family: JetBrainsMono-extrabold;
+  background: #c2e0e3;
+  background: linear-gradient(180deg, rgba(194, 224, 227, 1) 0%, rgba(157, 181, 192, 1) 100%);
 }
 </style>
