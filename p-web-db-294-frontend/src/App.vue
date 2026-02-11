@@ -5,7 +5,7 @@ import SearchBar from './components/SearchBar.vue'
 
 <template>
   <div class="wrapper">
-    <header style="grid-area: header;">
+    <header style="grid-area: header">
       <nav>
         <RouterLink to="/">L&CloseCurlyQuote;0ctet Littéraire</RouterLink>
           <span></span>
@@ -13,9 +13,11 @@ import SearchBar from './components/SearchBar.vue'
       </nav>
       <SearchBar></SearchBar>
     </header>
+    <img class="svg top" style="grid-area: top-svg" src="./assets/waves-top.svg" alt="">
     <main style="grid-area: main">
       <RouterView />
     </main>
+    <img class="svg bot" style="grid-area: bot-svg" src="./assets/waves-bot.svg" alt="">
     <footer style="grid-area: footer"></footer>
   </div>
 </template>
@@ -64,5 +66,21 @@ import SearchBar from './components/SearchBar.vue'
         content: '○';
       }
     }
+  }
+
+  .svg {
+    width: 100%;
+    height: 50vh;
+  }
+
+  .top {
+    transform: scaleY(-1);
+    transform-origin: center;
+  }
+
+  footer {
+    background: #000000;
+    height: 100%;
+    width: 100%;
   }
 </style>
