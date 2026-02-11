@@ -11,7 +11,8 @@
     border-radius: 5px;
     box-sizing: content-box;
 
-    background: var(--main);
+    background: url('../assets/icons/search.svg') center right 0.5rem no-repeat;
+    background-color: var(--main);
 
     transition: all 200ms;
   }

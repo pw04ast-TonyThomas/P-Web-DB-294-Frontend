@@ -24,7 +24,7 @@ import SearchBar from './components/SearchBar.vue';
 
 <style scoped>
   .wrapper {
-    height: 100%;
+    min-height: 100%;
 
     display: grid;
     grid-template:
@@ -55,6 +55,10 @@ import SearchBar from './components/SearchBar.vue';
       & a {
         color: var(--third);
         text-decoration: none;
+      }
+
+      & a:hover {
+        text-decoration: underline;
       }
     }
   }
