@@ -18,7 +18,9 @@ import SearchBar from './components/SearchBar.vue'
       <RouterView />
     </main>
     <img class="svg bot" style="grid-area: bot-svg" src="./assets/waves-bot.svg" alt="">
-    <footer style="grid-area: footer"></footer>
+    <footer style="grid-area: footer">
+      <p>&copy; L&CloseCurlyQuote;0ctet Littéraire</p>
+    </footer>
   </div>
 </template>
 
@@ -82,5 +84,8 @@ import SearchBar from './components/SearchBar.vue'
     background: #000000;
     height: 100%;
     width: 100%;
+    color: #ffffff;
+    padding: 1rem;
+    box-sizing: border-box;
   }
 </style>
