@@ -17,10 +17,10 @@
 
 :root {
   font-family: JetBrainsMono;
-  --main: #E0FCFC;
-  --secondary: #C2E0E3;
-  --secondary-2: #9DB5C0;
-  --third: #5C6C73;
+  --main: #e0fcfc;
+  --secondary: #c2e0e3;
+  --secondary-2: #9db5c0;
+  --third: #5c6c73;
   --third-2: #253337;
 }
 
@@ -30,7 +30,8 @@
   padding: 0;
 }
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
