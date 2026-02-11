@@ -10,6 +10,7 @@ import SearchBar from './components/SearchBar.vue'
         <RouterLink to="/">L&CloseCurlyQuote;0ctet Littéraire</RouterLink>
           <span></span>
         <RouterLink to="/works">Ouvrages</RouterLink>
+        <RouterLink to="/add-book">addbook</RouterLink>
       </nav>
       <SearchBar></SearchBar>
     </header>
