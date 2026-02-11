@@ -9,3 +9,9 @@ const apiClient = axios.create({
     'Content-Type': 'application/json',
   },
 })
+
+export default {
+  getBook(id) {
+    return apiClient.get(`/ouvrages/${id}`)
+  },
+}
