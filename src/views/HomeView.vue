@@ -4,8 +4,11 @@ import Service from '@/services/service.js'
 
 const book = ref(null)
 
+const rndBookId = Math.ceil(Math.random() * 3)
+
 onMounted(() => {
-  Service.getBook(1)
+  console.log(rndBookId)
+  Service.getBook(rndBookId)
     .then((response) => {
       book.value = response.data
     })

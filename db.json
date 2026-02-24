@@ -14,6 +14,36 @@
       "editeur": "Gallimard",
       "anneeEdition": 1943,
       "imageCouverture": "/images/petit-prince.jpg"
+    },
+    {
+      "id": 2,
+      "titre": "1984",
+      "categorie": "roman",
+      "nbPages": 328,
+      "extrait": "/extraits/1984.pdf",
+      "resume": "Une dystopie sur un régime totalitaire...",
+      "auteur": {
+        "nom": "Orwell",
+        "prenom": "George"
+      },
+      "editeur": "Secker & Warburg",
+      "anneeEdition": 1949,
+      "imageCouverture": "/images/1984.jpg"
+    },
+    {
+      "id": 3,
+      "titre": "Le Comte de Monte-Cristo",
+      "categorie": "roman",
+      "nbPages": 1248,
+      "extrait": "/extraits/monte-cristo.pdf",
+      "resume": "Une histoire de vengeance et de justice...",
+      "auteur": {
+        "nom": "Dumas",
+        "prenom": "Alexandre"
+      },
+      "editeur": "Perrin",
+      "anneeEdition": 1844,
+      "imageCouverture": "/images/monte-cristo.jpg"
     }
   ],
   "users": [
@@ -24,6 +54,22 @@
       "nbOuvragesProposes": 2,
       "nbAppreciations": 5,
       "nbCommentaires": 3
+    },
+    {
+      "id": 2,
+      "pseudo": "litteratureFan",
+      "dateEntree": "2023-11-03",
+      "nbOuvragesProposes": 1,
+      "nbAppreciations": 4,
+      "nbCommentaires": 2
+    },
+    {
+      "id": 3,
+      "pseudo": "romansAddict",
+      "dateEntree": "2025-02-20",
+      "nbOuvragesProposes": 3,
+      "nbAppreciations": 7,
+      "nbCommentaires": 5
     }
   ],
   "appreciations": [
@@ -31,6 +77,24 @@
       "id": 1,
       "ouvrageId": 1,
       "userId": 1,
+      "note": 5
+    },
+    {
+      "id": 2,
+      "ouvrageId": 2,
+      "userId": 1,
+      "note": 4
+    },
+    {
+      "id": 3,
+      "ouvrageId": 1,
+      "userId": 2,
+      "note": 4
+    },
+    {
+      "id": 4,
+      "ouvrageId": 3,
+      "userId": 3,
       "note": 5
     }
   ],
@@ -41,6 +105,20 @@
       "userId": 1,
       "contenu": "Magnifique œuvre !",
       "date": "2025-02-10"
+    },
+    {
+      "id": 2,
+      "ouvrageId": 2,
+      "userId": 2,
+      "contenu": "Un classique incontournable.",
+      "date": "2025-03-12"
+    },
+    {
+      "id": 3,
+      "ouvrageId": 3,
+      "userId": 3,
+      "contenu": "Épique et passionnant du début à la fin.",
+      "date": "2025-04-01"
     }
   ]
 }
