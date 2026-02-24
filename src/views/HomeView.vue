@@ -31,8 +31,10 @@ function GetFourBooks() {
 <template>
   <main>
     <h1>L'0ctet littéraire</h1>
-    <p class="title-desc" style="font-family: JetBrainsMono-bold">Littérature et numérique,</p>
-    <p class="title-desc" style="font-family: JetBrainsMono-bold"><br />unis par la curiosité.</p>
+    <div class="title-desc-div">
+      <p class="title-desc" style="font-family: JetBrainsMono-bold">Littérature et numérique,</p>
+      <p class="title-desc" style="font-family: JetBrainsMono-bold">unis par la curiosité.</p>
+    </div>
 
     <div class="description">
       <div>
@@ -63,12 +65,13 @@ function GetFourBooks() {
 </template>
 
 <style scoped>
+.title-desc-div {
+  margin-top: 1rem;
+}
 .title-desc {
-  position: absolute;
-  top: 465px;
   text-align: center;
   font-style: italic;
-  font-size: 20px;
+  font-size: 1.5rem;
   background: #c2e0e3;
   background: linear-gradient(180deg, rgba(194, 224, 227, 1) 0%, rgba(157, 181, 192, 1) 100%);
   -webkit-background-clip: text; /* clip background to text (WebKit browsers) */
