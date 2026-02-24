@@ -92,7 +92,7 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   gap: 100px;
-  margin-top: 100px2;
+  margin-top: 100px;
 }
 
 .description > div {
