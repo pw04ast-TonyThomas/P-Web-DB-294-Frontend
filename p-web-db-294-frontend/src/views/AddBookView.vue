@@ -45,31 +45,28 @@
 </template>
 
 <style scoped>
-
 .add_book_form {
-    display: grid;
-    grid-template-columns: 1fr, 1fr;
-  }
-  .add_book_form {
-    margin-top: 100px;
+  display: grid;
+  grid-template-columns: 1fr, 1fr;
+}
+.add_book_form {
+  margin-top: 100px;
 
-    display: grid;
-    grid-template-columns: 1fr 6fr;
-    gap: 63px;
-    
-    justify-self:center;
-    justify-content: center;
-    align-items: center;
-  }
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+  gap: 63px;
 
-  .add_book_form > input {
-    background-color: var(--main);
-    border: 2px, solid;
-    border-color: var(--third-2);
-    border-radius: 10px;
-    padding: 4px;
-    width: 50%;
+  justify-self: center;
+  justify-content: center;
+  align-items: center;
+}
 
-  }
-  
+.add_book_form > input {
+  background-color: var(--main);
+  border: 2px, solid;
+  border-color: var(--third-2);
+  border-radius: 10px;
+  padding: 4px;
+  width: 50%;
+}
 </style>
