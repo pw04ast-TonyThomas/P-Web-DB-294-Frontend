@@ -9,7 +9,7 @@ import SearchBar from './components/SearchBar.vue'
       <nav>
         <RouterLink to="/">L&CloseCurlyQuote;0ctet Littéraire</RouterLink>
         <span></span>
-        <RouterLink to="/works">Ouvrages</RouterLink>
+        <RouterLink to="/books">Ouvrages</RouterLink>
         <span></span>
         <RouterLink to="/add-book">addbook</RouterLink>
       </nav>
@@ -24,7 +24,7 @@ import SearchBar from './components/SearchBar.vue'
       <p>&copy; L&CloseCurlyQuote;0ctet Littéraire</p>
     </footer>
   </div>
-  <!--         
+  <!--
         <p style="font-family: JetBrainsMono">test</p>
         <p style="font-family: JetBrainsMono-bold">test</p>
         <p style="font-family: JetBrainsMono-ExtraBold">test</p>

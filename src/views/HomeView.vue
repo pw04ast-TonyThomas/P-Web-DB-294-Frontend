@@ -34,9 +34,10 @@ onMounted(() => {
     <div class="description">
       <div>
         <p>
-          L’0ctet Littéraire est une bibliothèque moderne où les mots rencontrent les machines. À la
-          croisée de la littérature et de l’informatique, nous proposons un espace chaleureux dédié
-          aux passionnés de lecture, aux curieux du numérique et aux esprits créatifs.
+          L&CloseCurlyQuote;0ctet Littéraire est une bibliothèque moderne où les mots rencontrent
+          les machines. À la croisée de la littérature et de l&CloseCurlyQuote;informatique, nous
+          proposons un espace chaleureux dédié aux passionnés de lecture, aux curieux du numérique
+          et aux esprits créatifs.
         </p>
         <img src="../assets/learn 2.svg" alt="" />
       </div>
@@ -76,7 +77,7 @@ onMounted(() => {
 .books {
   display: grid;
   gap: 50px;
-  grid-template-columns: 1fr 1fr;
+  grid-template: '. .' '. .'/ 1fr 1fr;
   margin-top: 100px;
 }
 .book {
