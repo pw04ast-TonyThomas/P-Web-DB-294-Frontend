@@ -7,10 +7,7 @@
       "nbPages": 96,
       "extrait": "/extraits/petit-prince.pdf",
       "resume": "Un conte poétique et philosophique...",
-      "auteur": {
-        "nom": "Saint-Exupéry",
-        "prenom": "Antoine"
-      },
+      "auteur": { "nom": "Saint-Exupéry", "prenom": "Antoine" },
       "editeur": "Gallimard",
       "anneeEdition": 1943,
       "imageCouverture": "/images/petit-prince.jpg"
@@ -22,10 +19,7 @@
       "nbPages": 328,
       "extrait": "/extraits/1984.pdf",
       "resume": "Une dystopie sur un régime totalitaire...",
-      "auteur": {
-        "nom": "Orwell",
-        "prenom": "George"
-      },
+      "auteur": { "nom": "Orwell", "prenom": "George" },
       "editeur": "Secker & Warburg",
       "anneeEdition": 1949,
       "imageCouverture": "/images/1984.jpg"
@@ -37,13 +31,94 @@
       "nbPages": 1248,
       "extrait": "/extraits/monte-cristo.pdf",
       "resume": "Une histoire de vengeance et de justice...",
-      "auteur": {
-        "nom": "Dumas",
-        "prenom": "Alexandre"
-      },
+      "auteur": { "nom": "Dumas", "prenom": "Alexandre" },
       "editeur": "Perrin",
       "anneeEdition": 1844,
       "imageCouverture": "/images/monte-cristo.jpg"
+    },
+    {
+      "id": 4,
+      "titre": "Les Misérables",
+      "categorie": "roman",
+      "nbPages": 1463,
+      "extrait": "/extraits/les-miserables.pdf",
+      "resume": "Une fresque sociale et humaine...",
+      "auteur": { "nom": "Hugo", "prenom": "Victor" },
+      "editeur": "A. Lacroix",
+      "anneeEdition": 1862,
+      "imageCouverture": "/images/les-miserables.jpg"
+    },
+    {
+      "id": 5,
+      "titre": "L'Étranger",
+      "categorie": "roman",
+      "nbPages": 185,
+      "extrait": "/extraits/etranger.pdf",
+      "resume": "Un récit sur l’absurdité de la condition humaine...",
+      "auteur": { "nom": "Camus", "prenom": "Albert" },
+      "editeur": "Gallimard",
+      "anneeEdition": 1942,
+      "imageCouverture": "/images/etranger.jpg"
+    },
+    {
+      "id": 6,
+      "titre": "Madame Bovary",
+      "categorie": "roman",
+      "nbPages": 329,
+      "extrait": "/extraits/madame-bovary.pdf",
+      "resume": "Portrait d’une femme en quête d’idéal...",
+      "auteur": { "nom": "Flaubert", "prenom": "Gustave" },
+      "editeur": "Michel Lévy",
+      "anneeEdition": 1857,
+      "imageCouverture": "/images/madame-bovary.jpg"
+    },
+    {
+      "id": 7,
+      "titre": "Germinal",
+      "categorie": "roman",
+      "nbPages": 592,
+      "extrait": "/extraits/germinal.pdf",
+      "resume": "Une plongée dans le monde ouvrier du XIXe siècle...",
+      "auteur": { "nom": "Zola", "prenom": "Émile" },
+      "editeur": "Charpentier",
+      "anneeEdition": 1885,
+      "imageCouverture": "/images/germinal.jpg"
+    },
+    {
+      "id": 8,
+      "titre": "La Peste",
+      "categorie": "roman",
+      "nbPages": 308,
+      "extrait": "/extraits/la-peste.pdf",
+      "resume": "Une allégorie sur la solidarité et la résistance...",
+      "auteur": { "nom": "Camus", "prenom": "Albert" },
+      "editeur": "Gallimard",
+      "anneeEdition": 1947,
+      "imageCouverture": "/images/la-peste.jpg"
+    },
+    {
+      "id": 9,
+      "titre": "Candide",
+      "categorie": "roman",
+      "nbPages": 192,
+      "extrait": "/extraits/candide.pdf",
+      "resume": "Une satire philosophique pleine d’ironie...",
+      "auteur": { "nom": "Voltaire", "prenom": "François-Marie" },
+      "editeur": "Cramer",
+      "anneeEdition": 1759,
+      "imageCouverture": "/images/candide.jpg"
+    },
+    {
+      "id": 10,
+      "titre": "La Condition humaine",
+      "categorie": "roman",
+      "nbPages": 368,
+      "extrait": "/extraits/condition-humaine.pdf",
+      "resume": "Un roman sur l’engagement et la révolution...",
+      "auteur": { "nom": "Malraux", "prenom": "André" },
+      "editeur": "Gallimard",
+      "anneeEdition": 1933,
+      "imageCouverture": "/images/condition-humaine.jpg"
     }
   ],
   "users": [
@@ -70,55 +145,140 @@
       "nbOuvragesProposes": 3,
       "nbAppreciations": 7,
       "nbCommentaires": 5
-    }
-  ],
-  "appreciations": [
-    {
-      "id": 1,
-      "ouvrageId": 1,
-      "userId": 1,
-      "note": 5
-    },
-    {
-      "id": 2,
-      "ouvrageId": 2,
-      "userId": 1,
-      "note": 4
-    },
-    {
-      "id": 3,
-      "ouvrageId": 1,
-      "userId": 2,
-      "note": 4
     },
     {
       "id": 4,
-      "ouvrageId": 3,
-      "userId": 3,
-      "note": 5
+      "pseudo": "classicReader",
+      "dateEntree": "2022-06-11",
+      "nbOuvragesProposes": 1,
+      "nbAppreciations": 6,
+      "nbCommentaires": 4
+    },
+    {
+      "id": 5,
+      "pseudo": "philoPassion",
+      "dateEntree": "2024-09-01",
+      "nbOuvragesProposes": 2,
+      "nbAppreciations": 3,
+      "nbCommentaires": 2
+    },
+    {
+      "id": 6,
+      "pseudo": "bibliophile75",
+      "dateEntree": "2023-03-19",
+      "nbOuvragesProposes": 4,
+      "nbAppreciations": 8,
+      "nbCommentaires": 6
+    },
+    {
+      "id": 7,
+      "pseudo": "readerForever",
+      "dateEntree": "2025-01-05",
+      "nbOuvragesProposes": 1,
+      "nbAppreciations": 2,
+      "nbCommentaires": 1
+    },
+    {
+      "id": 8,
+      "pseudo": "novelExplorer",
+      "dateEntree": "2024-12-12",
+      "nbOuvragesProposes": 2,
+      "nbAppreciations": 4,
+      "nbCommentaires": 3
+    },
+    {
+      "id": 9,
+      "pseudo": "literaryMind",
+      "dateEntree": "2022-10-08",
+      "nbOuvragesProposes": 5,
+      "nbAppreciations": 9,
+      "nbCommentaires": 7
+    },
+    {
+      "id": 10,
+      "pseudo": "bookCriticX",
+      "dateEntree": "2025-02-01",
+      "nbOuvragesProposes": 1,
+      "nbAppreciations": 3,
+      "nbCommentaires": 2
     }
   ],
+  "appreciations": [
+    { "id": 1, "ouvrageId": 1, "userId": 1, "note": 5 },
+    { "id": 2, "ouvrageId": 2, "userId": 2, "note": 4 },
+    { "id": 3, "ouvrageId": 3, "userId": 3, "note": 5 },
+    { "id": 4, "ouvrageId": 4, "userId": 4, "note": 5 },
+    { "id": 5, "ouvrageId": 5, "userId": 5, "note": 4 },
+    { "id": 6, "ouvrageId": 6, "userId": 6, "note": 4 },
+    { "id": 7, "ouvrageId": 7, "userId": 7, "note": 5 },
+    { "id": 8, "ouvrageId": 8, "userId": 8, "note": 4 },
+    { "id": 9, "ouvrageId": 9, "userId": 9, "note": 5 },
+    { "id": 10, "ouvrageId": 10, "userId": 10, "note": 4 }
+  ],
   "commentaires": [
-    {
-      "id": 1,
-      "ouvrageId": 1,
-      "userId": 1,
-      "contenu": "Magnifique œuvre !",
-      "date": "2025-02-10"
-    },
+    { "id": 1, "ouvrageId": 1, "userId": 1, "contenu": "Magnifique œuvre !", "date": "2025-02-10" },
     {
       "id": 2,
       "ouvrageId": 2,
       "userId": 2,
-      "contenu": "Un classique incontournable.",
+      "contenu": "Très prenant et troublant.",
       "date": "2025-03-12"
     },
     {
       "id": 3,
       "ouvrageId": 3,
       "userId": 3,
-      "contenu": "Épique et passionnant du début à la fin.",
+      "contenu": "Un chef-d'œuvre intemporel.",
       "date": "2025-04-01"
+    },
+    {
+      "id": 4,
+      "ouvrageId": 4,
+      "userId": 4,
+      "contenu": "Une histoire profondément humaine.",
+      "date": "2025-04-15"
+    },
+    {
+      "id": 5,
+      "ouvrageId": 5,
+      "userId": 5,
+      "contenu": "Simple mais puissant.",
+      "date": "2025-05-02"
+    },
+    {
+      "id": 6,
+      "ouvrageId": 6,
+      "userId": 6,
+      "contenu": "Très réaliste et émouvant.",
+      "date": "2025-05-10"
+    },
+    {
+      "id": 7,
+      "ouvrageId": 7,
+      "userId": 7,
+      "contenu": "Intense et marquant.",
+      "date": "2025-05-18"
+    },
+    {
+      "id": 8,
+      "ouvrageId": 8,
+      "userId": 8,
+      "contenu": "Une réflexion puissante.",
+      "date": "2025-05-25"
+    },
+    {
+      "id": 9,
+      "ouvrageId": 9,
+      "userId": 9,
+      "contenu": "Ironique et brillant.",
+      "date": "2025-06-01"
+    },
+    {
+      "id": 10,
+      "ouvrageId": 10,
+      "userId": 10,
+      "contenu": "Profond et engagé.",
+      "date": "2025-06-10"
     }
   ]
 }

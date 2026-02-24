@@ -23,6 +23,9 @@ onMounted(() => {
       console.log(error)
     })
 })
+function GetFourBooks() {
+  return books[(0, 3)]
+}
 </script>
 
 <template>
@@ -51,7 +54,7 @@ onMounted(() => {
     </div>
 
     <div v-if="books" class="books">
-      <div v-for="book in books" class="book">
+      <div v-for="book in GetFourBooks" class="book">
         <h2>{{ book.titre }}</h2>
       </div>
     </div>
@@ -99,5 +102,6 @@ onMounted(() => {
   width: 60vw;
   display: flex;
   gap: 100px;
+  place-items: center;
 }
 </style>
