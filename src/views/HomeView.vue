@@ -24,7 +24,8 @@ onMounted(() => {
     })
 })
 function GetFourBooks() {
-  return books[(0, 3)]
+  const bookIndex = Math.ceil(Math.random() * 5)
+  return books.value.slice(bookIndex, bookIndex + 4)
 }
 </script>
 
@@ -57,7 +58,7 @@ function GetFourBooks() {
     </div>
 
     <div v-if="books" class="books">
-      <div v-for="book in GetFourBooks" class="book">
+      <div v-for="book in GetFourBooks()" class="book">
         <h2>{{ book.titre }}</h2>
       </div>
     </div>
@@ -74,10 +75,10 @@ function GetFourBooks() {
   font-size: 1.5rem;
   background: #c2e0e3;
   background: linear-gradient(180deg, rgba(194, 224, 227, 1) 0%, rgba(157, 181, 192, 1) 100%);
-  -webkit-background-clip: text; /* clip background to text (WebKit browsers) */
-  -webkit-text-fill-color: transparent; /* make text fill transparent to show the background */
-  background-clip: text; /* for Firefox */
-  color: transparent; /* fallback */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
 }
 
 .books {
