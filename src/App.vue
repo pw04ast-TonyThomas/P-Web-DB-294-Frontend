@@ -24,6 +24,11 @@ import SearchBar from './components/SearchBar.vue'
       <p>&copy; L&CloseCurlyQuote;0ctet Littéraire</p>
     </footer>
   </div>
+  <!--         
+        <p style="font-family: JetBrainsMono">test</p>
+        <p style="font-family: JetBrainsMono-bold">test</p>
+        <p style="font-family: JetBrainsMono-ExtraBold">test</p>
+  -->
 </template>
 
 <style scoped>
