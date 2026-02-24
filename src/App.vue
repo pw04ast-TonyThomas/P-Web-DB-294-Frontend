@@ -10,6 +10,7 @@ import SearchBar from './components/SearchBar.vue'
         <RouterLink to="/">L&CloseCurlyQuote;0ctet Littéraire</RouterLink>
         <span></span>
         <RouterLink to="/works">Ouvrages</RouterLink>
+        <span></span>
         <RouterLink to="/add-book">addbook</RouterLink>
       </nav>
       <SearchBar></SearchBar>
@@ -101,5 +102,6 @@ h1 {
   font-family: JetBrainsMono-extrabold;
   background: #c2e0e3;
   background: linear-gradient(180deg, rgba(194, 224, 227, 1) 0%, rgba(157, 181, 192, 1) 100%);
+  margin-bottom: 50px;
 }
 </style>
