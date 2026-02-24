@@ -16,7 +16,7 @@ const categories = Object.values(BookCategory)
 
 const filePath = '../../db.json'
 
-function createOuvrages(count = 250) {
+function createOuvrages(count = 1000) {
   return Array.from({ length: count }, (_, i) => ({
     id: i + 1,
     titre: faker.lorem.words({ min: 2, max: 4 }),
@@ -34,7 +34,7 @@ function createOuvrages(count = 250) {
   }))
 }
 
-function createUsers(count = 250) {
+function createUsers(count = 1000) {
   return Array.from({ length: count }, (_, i) => ({
     id: i + 1,
     pseudo: faker.internet.username(),
@@ -65,8 +65,8 @@ function createCommentaires(ouvrages, users) {
 }
 
 async function seed() {
-  const ouvrages = createOuvrages(250)
-  const users = createUsers(250)
+  const ouvrages = createOuvrages(1000)
+  const users = createUsers(1000)
   const appreciations = createAppreciations(ouvrages, users)
   const commentaires = createCommentaires(ouvrages, users)
 

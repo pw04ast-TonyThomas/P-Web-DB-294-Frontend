@@ -5,10 +5,12 @@ import Service from '@/services/service.js'
 const book = ref(null)
 const books = ref(null)
 
-const rndBookId = Math.ceil(Math.random() * 3)
+function GetRandomBook() {
+  return Math.round(Math.random() * 1000)
+}
 
 onMounted(() => {
-  Service.getBook(rndBookId)
+  Service.getBook(GetRandomBook())
     .then((response) => {
       book.value = response.data
     })
@@ -23,8 +25,9 @@ onMounted(() => {
       console.log(error)
     })
 })
+
 function GetFourBooks() {
-  const bookIndex = Math.ceil(Math.random() * 5)
+  let bookIndex = GetRandomBook()
   return books.value.slice(bookIndex, bookIndex + 4)
 }
 </script>

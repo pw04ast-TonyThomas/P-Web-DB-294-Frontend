@@ -2,7 +2,7 @@ import axios from 'axios'
 
 // File for api calls and stuff
 const apiClient = axios.create({
-  baseURL: 'https://my-json-server.typicode.com/pw04ast-TonyThomas/P-Web-DB-294-Frontend',
+  baseURL: 'http://localhost:3000',
   withCredentials: false,
   headers: {
     Accept: 'application/json',
