@@ -11,7 +11,7 @@ const apiClient = axios.create({
 })
 
 export default {
-  getBook(id: number) {
+  getBook(id) {
     return apiClient.get(`/ouvrages/${id}`)
   },
 }
