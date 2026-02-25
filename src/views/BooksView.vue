@@ -107,6 +107,10 @@ const handleWheel = (e: WheelEvent) => {
 .category-list {
   display: flex;
   gap: 1rem;
+
+  -webkit-mask-image: linear-gradient(to right, black 80%, transparent 100%);
+  mask-image: linear-gradient(to right, black 80%, transparent 100%);
+
   overflow-x: auto;
   scroll-behavior: smooth;
   -ms-overflow-style: none;
