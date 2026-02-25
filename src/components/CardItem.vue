@@ -1,23 +1,24 @@
 <script lang="ts" setup>
+import starIcon from '../assets/icons/star.svg'
+import starEmptyIcon from '../assets/icons/starEmpty.svg'
 defineProps(['src', 'title', 'rating'])
-const getStars = (rating: number) => {
-  const max = 5
-  const fullStars = Math.round(Math.min(Math.max(rating, 0), max))
-  const emptyStars = max - fullStars
-
-  return '★'.repeat(fullStars) + '☆'.repeat(emptyStars)
-}
 </script>
 
 <template>
   <div class="card">
     <img :src="src" alt="" />
     <h3>{{ title }}</h3>
-    <h4>{{ getStars(rating) }}</h4>
+    <div class="rating">
+      <img v-for="s in Math.round(rating)" :key="s" :src="starIcon" />
+      <img v-for="s in 5 - Math.round(rating)" :key="s" :src="starEmptyIcon" />
+    </div>
   </div>
 </template>
 
 <style scoped>
+.rating > img {
+  height: 2rem;
+}
 .card > img {
   height: 14rem;
   aspect-ratio: 1 / 1;
