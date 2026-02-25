@@ -17,4 +17,7 @@ export default {
   getBooks() {
     return apiClient.get(`/ouvrages/`)
   },
+  getRatings() {
+    return apiClient.get(`/appreciations/`)
+  },
 }
