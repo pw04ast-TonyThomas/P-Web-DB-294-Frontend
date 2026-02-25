@@ -89,16 +89,33 @@ function GetNBooks(nb) {
 
 .books {
   display: grid;
-  gap: 100px;
+  gap: 3vw;
   grid-template: '. .' '. .' '. .'/ 1fr 1fr 1fr;
 }
+
 .book {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 25rem;
-  height: 35rem;
-  border: solid 3px black;
+  width: 20vw;
+  height: 100%;
+  text-align: center;
+  background: #c2e0e3;
+  background: linear-gradient(180deg, rgba(194, 224, 227, 1) 0%, rgba(157, 181, 192, 1) 100%);
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+.book h3 {
+  margin: 2rem;
+  font-size: 1.6rem;
+}
+
+.book img {
+  width: 75%;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
 }
 
 .description {
