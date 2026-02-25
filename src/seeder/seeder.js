@@ -16,6 +16,8 @@ const categories = Object.values(BookCategory)
 
 const filePath = '../../db.json'
 
+const nbOfBookCovers = 45
+
 function createOuvrages(count = 1000) {
   return Array.from({ length: count }, (_, i) => ({
     id: i + 1,
@@ -30,7 +32,7 @@ function createOuvrages(count = 1000) {
     },
     editeur: faker.company.name(),
     anneeEdition: faker.number.int({ min: 1750, max: 2024 }),
-    imageCouverture: `/images/${faker.system.fileName()}.jpg`,
+    imageCouverture: `/book covers/${Math.ceil(Math.random() * nbOfBookCovers)}.jpg`,
   }))
 }
 
