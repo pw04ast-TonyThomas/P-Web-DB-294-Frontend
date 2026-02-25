@@ -1,5 +1,17 @@
 <script setup lang="ts">
 import CardItem from '@/components/CardItem.vue'
+
+// We create a single function to handle the scroll
+const handleWheel = (e: WheelEvent) => {
+  // target is the specific list being hovered
+  const container = e.currentTarget as HTMLElement
+
+  if (container) {
+    e.preventDefault()
+    // Speed multiplier of 4 for a very snappy feel
+    container.scrollLeft += e.deltaY * 4
+  }
+}
 </script>
 
 <template>
@@ -18,12 +30,56 @@ import CardItem from '@/components/CardItem.vue'
     </ul>
     <div class="category">
       <legend>Fantaisie</legend>
-      <CardItem src="https://cataas.com/cat" title="Harry Potter le 3" rating="4"></CardItem>
+      <div class="category-list" @wheel.prevent="handleWheel">
+        <CardItem
+          v-for="n in 10"
+          :key="n"
+          src="https://cataas.com/cat"
+          title="Harry Potter le 3"
+          rating="4"
+        ></CardItem>
+      </div>
+    </div>
+    <div class="category">
+      <legend>Action</legend>
+      <div class="category-list" @wheel.prevent="handleWheel">
+        <CardItem
+          v-for="n in 10"
+          :key="n"
+          src="https://cataas.com/cat"
+          title="Harry Potter le 3"
+          rating="4"
+        ></CardItem>
+      </div>
+    </div>
+    <div class="category">
+      <legend>Horreur</legend>
+      <div class="category-list" @wheel.prevent="handleWheel">
+        <CardItem
+          v-for="n in 10"
+          :key="n"
+          src="https://cataas.com/cat"
+          title="Harry Potter le 3"
+          rating="4"
+        ></CardItem>
+      </div>
     </div>
   </main>
 </template>
 
 <style scoped>
+.category-list {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 .category {
   width: 70vw;
 }
@@ -71,5 +127,9 @@ legend::before {
 
 .nav > li::marker {
   content: none;
+}
+
+main {
+  gap: 3rem;
 }
 </style>

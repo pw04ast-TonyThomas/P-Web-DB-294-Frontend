@@ -19,7 +19,20 @@ const getStars = (rating: number) => {
 
 <style scoped>
 .card > img {
-  height: 10rem;
+  height: 14rem;
   aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 2vh;
+}
+
+.card {
+  border: 0.5rem dashed var(--secondary-2);
+  border-radius: 2vh;
+  padding: 1rem;
+  display: flex;
+  place-items: center;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: var(--secondary);
 }
 </style>
