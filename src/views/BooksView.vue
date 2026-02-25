@@ -1,21 +1,70 @@
 <script setup lang="ts">
+// @ts-nocheck
 import CardItem from '@/components/CardItem.vue'
+import { ref, onMounted } from 'vue'
+import Service from '@/services/service.js'
+import BookCategory from '@/seeder/seeder.js'
 
-// We create a single function to handle the scroll
-const handleWheel = (e: WheelEvent) => {
-  // target is the specific list being hovered
-  const container = e.currentTarget as HTMLElement
+const book = ref(null)
+const books = ref(null)
+const ratings = ref(null)
 
-  if (container) {
-    e.preventDefault()
-    // Speed multiplier of 4 for a very snappy feel
-    container.scrollLeft += e.deltaY * 4
+onMounted(() => {
+  Service.getBook(GetRandomBook())
+    .then((response) => {
+      book.value = response.data
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+  Service.getBooks()
+    .then((response) => {
+      books.value = response.data
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+  Service.getRatings()
+    .then((response) => {
+      ratings.value = response.data
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+})
+
+// Returns a random book of a category, Takes a category
+function GetRandomBook(categorie = null) {
+  let allCategoryBooks = []
+  if (categorie) {
+    allCategoryBooks = books.value.filter((book) => {
+      return book.categorie == categorie
+    })
+    console.log('categorie : ' + categorie + ', nb of books : ' + allCategoryBooks.length)
+    const randomIndex = Math.floor(Math.random() * allCategoryBooks.length)
+    return allCategoryBooks[randomIndex]
   }
+  return 0
+}
+
+// Returns a given number of books of a certain category, Takes the amount and the category
+function GetNBooks(nb, categorie = null) {
+  let booksToBeReturned = []
+  for (let index = 0; index < nb; index++) {
+    booksToBeReturned.push(GetRandomBook(categorie))
+  }
+  console.log('books to be returned : ' + booksToBeReturned)
+  return booksToBeReturned
+}
+
+// returns the rating of a book, Takes the book's id.
+function GetBookRating(bookId) {
+  return ratings.value[ratings.value.find((rating) => rating.ouvrageId == bookId).id - 1].note // Links the book to the rating by checking the ouvrageId
 }
 </script>
 
 <template>
-  <main>
+  <main v-if="BookCategory && books">
     <h1>Ouvrages</h1>
     <ul class="nav">
       <li>
@@ -28,39 +77,15 @@ const handleWheel = (e: WheelEvent) => {
         <a href="">Supprimer un ouvrage</a>
       </li>
     </ul>
-    <div class="category">
-      <legend>Fantaisie</legend>
+    <div class="category" v-for="categorie in BookCategory" :key="categorie">
+      <legend>{{ categorie }}</legend>
       <div class="category-list" @wheel.prevent="handleWheel">
         <CardItem
-          v-for="n in 10"
-          :key="n"
-          src="https://cataas.com/cat"
-          title="Harry Potter le 3"
-          rating="4"
-        ></CardItem>
-      </div>
-    </div>
-    <div class="category">
-      <legend>Action</legend>
-      <div class="category-list" @wheel.prevent="handleWheel">
-        <CardItem
-          v-for="n in 10"
-          :key="n"
-          src="https://cataas.com/cat"
-          title="Harry Potter le 3"
-          rating="4"
-        ></CardItem>
-      </div>
-    </div>
-    <div class="category">
-      <legend>Horreur</legend>
-      <div class="category-list" @wheel.prevent="handleWheel">
-        <CardItem
-          v-for="n in 10"
-          :key="n"
-          src="https://cataas.com/cat"
-          title="Harry Potter le 3"
-          rating="4"
+          v-for="book in GetNBooks(10, categorie)"
+          :key="book.id"
+          :src="book.imageCouverture"
+          :title="book.titre"
+          :rating="GetBookRating(book.id)"
         ></CardItem>
       </div>
     </div>

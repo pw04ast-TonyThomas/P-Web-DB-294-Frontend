@@ -12,6 +12,8 @@ export const BookCategory = Object.freeze({
   HISTOIRE: 'histoire',
 })
 
+export default BookCategory
+
 const categories = Object.values(BookCategory)
 
 const filePath = '../../db.json'
@@ -52,7 +54,7 @@ function createAppreciations(ouvrages, users) {
     id: i + 1,
     ouvrageId: ouvrage.id,
     userId: users[i % users.length].id,
-    note: faker.number.int({ min: 3, max: 5 }),
+    note: faker.number.int({ min: 1, max: 5 }),
   }))
 }
 
