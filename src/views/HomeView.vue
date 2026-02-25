@@ -34,6 +34,7 @@ function GetNBooks(nb) {
 
 <template>
   <main>
+    <div class="banner"></div>
     <h1>L'0ctet littéraire</h1>
     <div class="title-desc-div">
       <p class="title-desc" style="font-family: JetBrainsMono-bold">Littérature et numérique,</p>
@@ -135,5 +136,16 @@ function GetNBooks(nb) {
 h2 {
   margin-top: 80px;
   margin-bottom: 50px;
+}
+
+.banner {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 3000px; /* extend vertically as needed */
+  background-image: url('../assets/BinaryWaterfall.svg');
+  background-repeat: repeat-y; /* repeats vertically */
+  z-index: -1;
 }
 </style>
