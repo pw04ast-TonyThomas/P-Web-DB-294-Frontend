@@ -61,6 +61,17 @@ function GetNBooks(nb, categorie = null) {
 function GetBookRating(bookId) {
   return ratings.value[ratings.value.find((rating) => rating.ouvrageId == bookId).id - 1].note // Links the book to the rating by checking the ouvrageId
 }
+
+const handleWheel = (e: WheelEvent) => {
+  // target is the specific list being hovered
+  const container = e.currentTarget as HTMLElement
+
+  if (container) {
+    e.preventDefault()
+    // Speed multiplier of 4 for a very snappy feel
+    container.scrollLeft += e.deltaY * 4
+  }
+}
 </script>
 
 <template>
