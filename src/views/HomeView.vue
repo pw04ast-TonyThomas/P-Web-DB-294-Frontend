@@ -26,9 +26,9 @@ onMounted(() => {
     })
 })
 
-function GetFourBooks() {
+function GetNBooks(nb) {
   let bookIndex = GetRandomBook()
-  return books.value.slice(bookIndex, bookIndex + 4)
+  return books.value.slice(bookIndex, bookIndex + Math.round(nb))
 }
 </script>
 
@@ -59,10 +59,12 @@ function GetFourBooks() {
         </p>
       </div>
     </div>
-
+    <div>
+      <h2>Best sellers</h2>
+    </div>
     <div v-if="books" class="books">
-      <div v-for="book in GetFourBooks()" class="book">
-        <h2>{{ book.titre }}</h2>
+      <div v-for="book in GetNBooks(6)" class="book">
+        <h3>{{ book.titre }}</h3>
       </div>
     </div>
   </main>
@@ -86,16 +88,15 @@ function GetFourBooks() {
 
 .books {
   display: grid;
-  gap: 50px;
-  grid-template: '. .' '. .'/ 1fr 1fr;
-  margin-top: 100px;
+  gap: 100px;
+  grid-template: '. .' '. .' '. .'/ 1fr 1fr 1fr;
 }
 .book {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 400px;
-  height: 500px;
+  width: 25rem;
+  height: 35rem;
   border: solid 3px black;
 }
 
@@ -111,5 +112,10 @@ function GetFourBooks() {
   display: flex;
   gap: 100px;
   place-items: center;
+}
+
+h2 {
+  margin-top: 80px;
+  margin-bottom: 50px;
 }
 </style>
