@@ -20,4 +20,7 @@ export default {
   getRatings() {
     return apiClient.get(`/appreciations/`)
   },
+  getComments() {
+    return apiClient.get(`/commentaires/`)
+  },
 }

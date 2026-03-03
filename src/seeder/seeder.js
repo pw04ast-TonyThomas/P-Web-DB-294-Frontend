@@ -2,7 +2,7 @@ import { faker } from '@faker-js/faker'
 
 faker.locale = 'fr'
 
-const BookCategory = Object.freeze({
+export const BookCategory = Object.freeze({
   ROMAN: 'roman',
   POESIE: 'poesie',
   THEATRE: 'theatre',
