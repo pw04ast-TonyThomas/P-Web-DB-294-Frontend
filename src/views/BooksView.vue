@@ -10,13 +10,6 @@ const books = ref(null)
 const ratings = ref(null)
 
 onMounted(() => {
-  Service.getBook(GetRandomBook())
-    .then((response) => {
-      book.value = response.data
-    })
-    .catch((error) => {
-      console.log(error)
-    })
   Service.getBooks()
     .then((response) => {
       books.value = response.data
@@ -59,7 +52,11 @@ function GetNBooks(nb, categorie = null) {
 
 // returns the rating of a book, Takes the book's id.
 function GetBookRating(bookId) {
-  return ratings.value[ratings.value.find((rating) => rating.ouvrageId == bookId).id - 1].note // Links the book to the rating by checking the ouvrageId
+  if (!ratings.value) return 1
+
+  const rating = ratings.value.find((rating) => rating.ouvrageId == bookId)
+
+  return rating ? rating.note : 1
 }
 
 const handleWheel = (e: WheelEvent) => {
@@ -75,7 +72,7 @@ const handleWheel = (e: WheelEvent) => {
 </script>
 
 <template>
-  <main v-if="BookCategory && books">
+  <main v-if="BookCategory && books && ratings">
     <h1>Ouvrages</h1>
     <ul class="nav">
       <li>
