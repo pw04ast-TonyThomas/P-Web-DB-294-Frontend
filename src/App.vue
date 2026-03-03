@@ -16,9 +16,7 @@ import SearchBar from './components/SearchBar.vue'
       <SearchBar></SearchBar>
     </header>
     <img class="svg top" style="grid-area: top-svg" src="./assets/waves-top.svg" alt="" />
-    <main style="grid-area: main">
-      <RouterView />
-    </main>
+    <RouterView />
     <img class="svg bot" style="grid-area: bot-svg" src="./assets/waves-bot.svg" alt="" />
     <footer style="grid-area: footer">
       <p>&copy; L&CloseCurlyQuote;0ctet Littéraire</p>
@@ -44,12 +42,6 @@ import SearchBar from './components/SearchBar.vue'
     'footer  footer  footer' 4rem
     / 2fr 8fr 2fr;
   place-items: start center;
-}
-
-main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 header {
