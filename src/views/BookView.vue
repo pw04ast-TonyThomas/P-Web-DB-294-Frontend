@@ -14,8 +14,9 @@ function GetBookRating(bookId) {
   return ratings.value[ratings.value.find((rating) => rating.ouvrageId == bookId).id - 1].note
 }
 
-function getComment(bookId) {
-  return comments.value[comments.value.find((comment) => comment.ouvrageId == bookId).id - 1]
+function getComments(bookId) {
+  if (!comments.value) return []
+  return comments.value.filter((c) => c.ouvrageId == bookId)
 }
 
 onMounted(() => {
@@ -59,12 +60,11 @@ onMounted(() => {
     <p class="summary-text">{{ book.resume }}</p>
     <h2 class="comment-header">Comment</h2>
     <div class="comment-box">
-      <p>{{ getComment(book.id).contenu }}</p>
-      <p>{{ getComment(book.id).contenu }}</p>
-      <p>{{ getComment(book.id).contenu }}</p>
-      <p>{{ getComment(book.id).contenu }}</p>
-      <p>{{ getComment(book.id).contenu }}</p>
-      <p>{{ getComment(book.id).contenu }}</p>
+      <div v-for="comment in getComments(props.id)" :key="comment.id" class="comment-item">
+        <p>{{ comment.contenu }}</p>
+      </div>
+
+      <p v-if="getComments(props.id).length === 0">No comments yet.</p>
     </div>
   </main>
 </template>
