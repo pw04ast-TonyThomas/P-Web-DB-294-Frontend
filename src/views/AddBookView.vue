@@ -1,43 +1,145 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import axios from 'axios'
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+const categories = ['roman', 'poesie', 'theatre', 'essai', 'biographie', 'science', 'histoire']
+const titre = ref('')
+const categorie = ref('')
+const num_pages = ref(0)
+const extrait_livre = ref(null)
+const resume = ref('')
+const nom_auteur = ref('')
+const prenom_auteur = ref('')
+const nom_editeur = ref('')
+const annee_edition = ref(0)
+const image_couverture = ref(null)
+
+const onCoverIgmChange = (e: Event) => {
+  const target = e.target as HTMLInputElement
+  const file = target.files?.[0]
+
+  if (!file) return
+
+  const allowedTypes = ['image/jpeg', 'image/png', 'image/webp']
+
+  if (!allowedTypes.includes(file.type)) {
+    alert('Format invalide ! Veuillez choisir une image JPG/JPEG/PNG/WEBP.')
+    target.value = ''
+    return
+  }
+
+  let src = URL.createObjectURL(file)
+  let imagePreview = document.getElementById('test') as HTMLImageElement
+
+  if (imagePreview) {
+    imagePreview.src = src
+    imagePreview.style.display = 'block'
+  }
+
+  image_couverture.value = file
+}
+
+const onCoverExtraitChange = (e: Event) => {
+  const target = e.target as HTMLInputElement
+  const file = target.files?.[0]
+
+  if (!file) return
+
+  if (file && file.type !== 'application/pdf') {
+    alert('Format invalide ! Veuillez choisir un document au format PDF.')
+    target.value = ''
+    return
+  } else {
+    extrait_livre.value = file
+  }
+}
+
+const addBook = () => {
+  axios.post('http://localhost:3000/ouvrages', {
+    titre: titre.value,
+    categorie: categorie.value,
+    num_pages: num_pages.value,
+    extrait_livre: extrait_livre.value ? `/extraitsLivres/${extrait_livre.value.name}` : '',
+    resume: resume.value,
+    nom_auteur: nom_auteur.value,
+    prenom_auteur: prenom_auteur.value,
+    nom_editeur: nom_editeur.value,
+    annee_edition: annee_edition.value,
+    image_couverture: image_couverture.value
+      ? `/book covers/${image_couverture.value.name}`
+      : `/book covers/1.jpg`,
+  })
+
+  router.push('/books')
+}
+</script>
 
 <template>
   <main class="book_add">
     <h1>Ajout d'un livre</h1>
-    <form action="POST" class="add_book_form">
+    <form class="add_book_form" enctype="multipart/form-data" @submit.prevent="addBook">
       <label for="titre">Titre</label>
-      <input type="text" id="titre" class="name_input" required />
+      <input type="text" v-model="titre" id="titre" class="name_input" required />
 
       <label for="categorie">Categorie</label>
-      <input id="categroie_list" list="categorie" required />
+      <input id="categroie_list" list="categorie" v-model="categorie" required />
       <datalist id="categorie">
-        <option v-for="categorie in categories">{{ categorie }}</option>
+        <option v-for="categorie in categories" :key="categorie" :value="categorie">
+          {{ categorie }}
+        </option>
       </datalist>
 
       <label for="num_pages">Nombre de pages</label>
-      <input type="number" id="num_pages" class="num_input" required />
+      <input type="number" id="num_pages" class="num_input" v-model="num_pages" required />
 
       <label for="extrait_livre">Extrait du livre</label>
-      <input type="file" id="extrait_livre" class="extrait_input" accept=".pdf" @change="onCoverExtraitChange" required />
+      <input
+        type="file"
+        id="extrait_livre"
+        class="extrait_input"
+        accept=".pdf"
+        @change="onCoverExtraitChange"
+      />
 
       <label for="resume" class="resume_label">Résumé</label>
-      <textarea id="resume" name="resume" class="resume_input" placeholder="Résumé de votre livre..." required></textarea>
+      <textarea
+        id="resume"
+        v-model="resume"
+        class="resume_input"
+        placeholder="Résumé de votre livre..."
+        required
+      ></textarea>
 
       <label for="nom_auteur">Nom de l'auteur</label>
-      <input type="text" id="nom_auteur" class="name_input" required />
+      <input type="text" v-model="nom_auteur" id="nom_auteur" class="name_input" required />
 
       <label for="prenom_auteur">Prénom de l'auteur</label>
-      <input type="text" id="prenom_auteur" class="name_input" required />
-      
+      <input type="text" v-model="prenom_auteur" id="prenom_auteur" class="name_input" required />
+
       <label for="nom_editeur">Nom de l'éditeur</label>
-      <input type="text" id="nom_editeur" class="name_input" required />
+      <input type="text" v-model="nom_editeur" id="nom_editeur" class="name_input" required />
 
       <label for="annee_edition">Année d'édition</label>
-      <input type="number" id="annee_edition" class="num_input" required />
+      <input type="number" v-model="annee_edition" id="annee_edition" class="num_input" required />
 
       <label for="image_couverture">Image de couverture</label>
       <div class="cover_div">
-        <input type="file" id="image_couverture" accept=".jpg, .jpeg, .png, .webp" class="cover_img_input" @change="onCoverIgmChange" required />
-        <img id="test" src="https://static.wikia.nocookie.net/shrek/images/8/85/Shrek_2001_poster.jpg/revision/latest/scale-to-width-down/1200?cb=20201020072731" alt="Image uploaded by the user" class="cover_img"/>
+        <input
+          type="file"
+          id="image_couverture"
+          accept=".jpg, .jpeg, .png, .webp"
+          class="cover_img_input"
+          @change="onCoverIgmChange"
+        />
+        <img
+          id="test"
+          src="https://static.wikia.nocookie.net/shrek/images/8/85/Shrek_2001_poster.jpg/revision/latest/scale-to-width-down/1200?cb=20201020072731"
+          alt="Image uploaded by the user"
+          class="cover_img"
+        />
       </div>
 
       <button type="submit" class="submit_button">Ajouter le livre</button>
@@ -126,7 +228,7 @@ input::file-selector-button {
 
 .cover_img {
   display: none;
-  
+
   max-width: 100px;
   height: auto;
   border: 2px solid var(--third-2);
@@ -151,68 +253,15 @@ input::file-selector-button {
 
 /* about the html default style */
 
-datalist option:hover, datalist option:focus {
+datalist option:hover,
+datalist option:focus {
   color: #fff;
   background-color: #036;
   outline: 0 none;
 }
 
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
 }
 </style>
-
-<script>
-export default {
-  data() {
-    return {
-      categories: [ "roman",
-                    "poesie",
-                    "theatre",
-                    "essai",
-                    "biographie",
-                    "science",
-                    "histoire",]
-    }
-  },
-  methods: {
-    onCoverIgmChange(e) {
-      const file = e.target.files[0];
-
-      if (!file) return;
-      
-      const allowedTypes = ["image/jpeg", "image/png", "image/webp"];
-
-      if (!allowedTypes.includes(file.type)) {
-        alert("Format invalide ! Veuillez choisir une image JPG/JPEG/PNG/WEBP.");
-        e.target.value = '';
-        return;
-      }
-      
-      let src = URL.createObjectURL(file);
-      let imagePreview = document.getElementById('test');
-      
-      if (imagePreview) {
-        imagePreview.src = src;
-        imagePreview.style.display = "block";
-      }
-    },
-    onCoverExtraitChange(e) {
-      const file = e.target.files[0];
-
-      if (!file) return;
-      
-
-    if (file.type !== "application/pdf") {
-        alert("Format invalide ! Veuillez choisir un document au format PDF.");
-        e.target.value = '';
-        return;
-      }
-    }
-  }
-};
-
-/////////////////////////////////////////////////
-
-</script>
