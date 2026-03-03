@@ -26,7 +26,7 @@ function createOuvrages(count = 1000) {
     titre: faker.lorem.words({ min: 2, max: 4 }),
     categorie: faker.helpers.arrayElement(categories),
     nbPages: faker.number.int({ min: 80, max: 1500 }),
-    extrait: `/extraits/${faker.system.fileName()}.pdf`,
+    extrait: faker.lorem.sentence({ min: 15, max: 300 }),
     resume: faker.lorem.sentence(),
     auteur: {
       nom: faker.person.lastName(),
@@ -52,8 +52,8 @@ function createUsers(count = 1000) {
 function createAppreciations(ouvrages, users) {
   return ouvrages.map((ouvrage, i) => ({
     id: i + 1,
-    ouvrageId: ouvrage.id,
-    userId: users[i % users.length].id,
+    ouvrageId: Math.round(ouvrages.length * Math.random()),
+    userId: Math.round(users.length * Math.random()),
     note: faker.number.int({ min: 1, max: 5 }),
   }))
 }
@@ -61,8 +61,8 @@ function createAppreciations(ouvrages, users) {
 function createCommentaires(ouvrages, users) {
   return ouvrages.map((ouvrage, i) => ({
     id: i + 1,
-    ouvrageId: ouvrage.id,
-    userId: users[i % users.length].id,
+    ouvrageId: Math.round(ouvrages.length * Math.random()),
+    userId: Math.round(users.length * Math.random()),
     contenu: faker.lorem.sentence(),
     date: faker.date.recent().toISOString().split('T')[0],
   }))
