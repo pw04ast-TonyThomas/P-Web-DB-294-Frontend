@@ -58,7 +58,14 @@ onMounted(() => {
     <h2 class="summary-header">Summary</h2>
     <p class="summary-text">{{ book.resume }}</p>
     <h2 class="comment-header">Comment</h2>
-    <p class="comment-box">{{ getComment(book.id).contenu }}</p>
+    <div class="comment-box">
+      <p>{{ getComment(book.id).contenu }}</p>
+      <p>{{ getComment(book.id).contenu }}</p>
+      <p>{{ getComment(book.id).contenu }}</p>
+      <p>{{ getComment(book.id).contenu }}</p>
+      <p>{{ getComment(book.id).contenu }}</p>
+      <p>{{ getComment(book.id).contenu }}</p>
+    </div>
   </main>
 </template>
 
@@ -69,12 +76,15 @@ onMounted(() => {
   display: grid;
   place-items: start;
   grid-template:
-    'img img title'
-    'img img subtitle'
-    'summary-title . .'
-    'summary summary summary'
-    'comment-title . .'
-    'comment comment comment';
+    'img title'
+    'img subtitle'
+    'summary-title .'
+    'summary summary'
+    'comment-title .'
+    'comment comment'
+    'comment comment'
+    'comment comment'
+    / 1fr 2fr;
 
   width: 70vw;
 }
@@ -105,5 +115,9 @@ onMounted(() => {
 }
 .comment-box {
   grid-area: comment;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: subgrid;
+  gap: 0.5rem;
 }
 </style>
