@@ -5,6 +5,8 @@ import SearchBar from './components/SearchBar.vue'
 
 <template>
   <div class="wrapper">
+    <div class="banner-left"></div>
+    <div class="banner-right"></div>
     <header style="grid-area: header">
       <nav>
         <RouterLink to="/">L&CloseCurlyQuote;0ctet Littéraire</RouterLink>
@@ -32,6 +34,7 @@ import SearchBar from './components/SearchBar.vue'
 <style scoped>
 .wrapper {
   min-height: 100%;
+  position: relative;
 
   display: grid;
   grid-template:
@@ -100,5 +103,29 @@ h1 {
   background: #c2e0e3;
   background: linear-gradient(180deg, rgba(194, 224, 227, 1) 0%, rgba(157, 181, 192, 1) 100%);
   margin-bottom: 50px;
+}
+
+.banner-left,
+.banner-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 183px;
+  height: 100%;
+
+  background-repeat: repeat-y; /* repeats vertically */
+  z-index: -1;
+  display: block;
+  /* transform: scaleX(-1); */
+}
+
+.banner-left {
+  left: 0;
+  background-image: url('/src/assets/BinaryWaterfallLeft.svg');
+}
+
+.banner-right {
+  right: 0;
+  background-image: url('/src/assets/BinaryWaterfallRight.svg');
 }
 </style>
