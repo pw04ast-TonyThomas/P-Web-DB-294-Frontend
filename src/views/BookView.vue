@@ -5,12 +5,17 @@ import Service from '@/services/service.js'
 
 const book = ref(null)
 const ratings = ref(null)
+const comments = ref(null)
 
 const props = defineProps(['id'])
 console.log(props.id)
 
 function GetBookRating(bookId) {
   return ratings.value[ratings.value.find((rating) => rating.ouvrageId == bookId).id - 1].note
+}
+
+function getComment(bookId) {
+  return comments.value[comments.value.find((comment) => comment.ouvrageId == bookId).id - 1]
 }
 
 onMounted(() => {
@@ -28,11 +33,18 @@ onMounted(() => {
     .catch((error) => {
       console.log(error)
     })
+  Service.getComments()
+    .then((response) => {
+      comments.value = response.data
+    })
+    .catch((error) => {
+      console.log(error)
+    })
 })
 </script>
 
 <template>
-  <main v-if="book" class="main">
+  <main v-if="book && id" class="main">
     <img class="book-image" :src="book.imageCouverture" />
     <h2 class="book-title">{{ book.titre }}</h2>
     <div class="book-subtitle">
@@ -43,9 +55,10 @@ onMounted(() => {
       <p>Edition: {{ book.editeur }} {{ book.anneeEdition }}</p>
       <p>Note: {{ GetBookRating(id) }} / 5</p>
     </div>
-    <h2 class="summary-header">summary</h2>
+    <h2 class="summary-header">Summary</h2>
     <p class="summary-text">{{ book.resume }}</p>
-    <h2 class="comment-header">comment</h2>
+    <h2 class="comment-header">Comment</h2>
+    <p class="comment-box">{{ getComment(book.id).contenu }}</p>
   </main>
 </template>
 
