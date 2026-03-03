@@ -56,7 +56,7 @@ onMounted(() => {
   display: grid;
   place-items: start;
   grid-template:
-    'img img title' 3rem
+    'img img title'
     'img img subtitle'
     'summary-title . .'
     'summary summary summary'
@@ -74,6 +74,9 @@ onMounted(() => {
 }
 .book-title {
   grid-area: title;
+  color: var(--third-2);
+  font-size: 3rem;
+  font-family: 'JetBrainsMono-Bold';
 }
 .book-subtitle {
   grid-area: subtitle;
