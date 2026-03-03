@@ -61,7 +61,7 @@ onMounted(() => {
     <h2 class="comment-header">Comment</h2>
     <div class="comment-box">
       <div v-for="comment in getComments(props.id)" :key="comment.id" class="comment-item">
-        <p>{{ comment.contenu }}</p>
+        <p>&OpenCurlyDoubleQuote;{{ comment.contenu }}&CloseCurlyDoubleQuote;</p>
       </div>
 
       <p v-if="getComments(props.id).length === 0">No comments yet.</p>
@@ -76,14 +76,14 @@ onMounted(() => {
   display: grid;
   place-items: start;
   grid-template:
-    'img title'
-    'img subtitle'
-    'summary-title .'
-    'summary summary'
-    'comment-title .'
-    'comment comment'
-    'comment comment'
-    'comment comment'
+    'img title' auto
+    'img subtitle' 1fr
+    'summary-title .' auto
+    'summary summary' auto
+    'comment-title .' auto
+    'comment comment' auto
+    'comment comment' auto
+    'comment comment' auto
     / 1fr 2fr;
 
   width: 70vw;
@@ -93,7 +93,7 @@ onMounted(() => {
   grid-area: img;
   place-self: center;
   width: 50%;
-  max-heigth: 100%;
+  max-height: 100%;
 }
 .book-title {
   grid-area: title;
@@ -118,6 +118,14 @@ onMounted(() => {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: subgrid;
-  gap: 0.5rem;
+  gap: 1rem;
+}
+
+.comment-item {
+  text-align: center;
+  background: var(--main);
+  padding: 3rem;
+  border-radius: 1rem;
+  box-shadow: 2px 4px 4px var(--third);
 }
 </style>
