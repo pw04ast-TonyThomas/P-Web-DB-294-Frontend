@@ -5,11 +5,8 @@ import AboutView from '../views/AboutView.vue'
 import AddBookView from '../views/AddBookView.vue'
 import BooksView from '@/views/BooksView.vue'
 import BookView from '@/views/BookView.vue'
-<<<<<<< HEAD
 import RemoveBook from '@/views/RemoveBook.vue'
-=======
 import BookModify from '@/views/BookModify.vue'
->>>>>>> 7f6be4eb61deff0cc4e545ed965a783e0fc04144
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -41,15 +38,14 @@ const router = createRouter({
       component: AddBookView,
     },
     {
-<<<<<<< HEAD
       path: '/remove-books',
       name: 'remove',
       component: RemoveBook,
-=======
+    },
+    {
       path: '/modify/:id',
       name: 'modify',
       component: BookModify,
->>>>>>> 7f6be4eb61deff0cc4e545ed965a783e0fc04144
     },
   ],
 })
