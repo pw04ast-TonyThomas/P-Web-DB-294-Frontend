@@ -23,4 +23,7 @@ export default {
   getComments() {
     return apiClient.get(`/commentaires/`)
   },
+  addBookToDB(newBook) {
+    return apiClient.post('/ouvrages/', newBook)
+  },
 }
