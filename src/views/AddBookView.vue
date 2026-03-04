@@ -2,6 +2,7 @@
 import axios from 'axios'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import Service from '@/services/service.js'
 
 const router = useRouter()
 
@@ -23,22 +24,29 @@ const onCoverIgmChange = (e: Event) => {
 
   if (!file) return
 
+  // which type of image is accepted
   const allowedTypes = ['image/jpeg', 'image/png', 'image/webp']
 
+  // check if the file is on the list
   if (!allowedTypes.includes(file.type)) {
     alert('Format invalide ! Veuillez choisir une image JPG/JPEG/PNG/WEBP.')
     target.value = ''
     return
   }
 
+  // url of the file (temporaly in the ram)
   let src = URL.createObjectURL(file)
+
+  // get the id of the html element
   let imagePreview = document.getElementById('test') as HTMLImageElement
 
+  // add a image as preview
   if (imagePreview) {
     imagePreview.src = src
     imagePreview.style.display = 'block'
   }
 
+  // defin the value
   image_couverture.value = file
 }
 
@@ -53,12 +61,15 @@ const onCoverExtraitChange = (e: Event) => {
     target.value = ''
     return
   } else {
+    // defin the value
     extrait_livre.value = file
   }
 }
 
 const addBook = () => {
-  axios.post('http://localhost:3000/ouvrages', {
+  // post the result
+
+  const newBook = {
     titre: titre.value,
     categorie: categorie.value,
     nbPages: num_pages.value,
@@ -73,8 +84,11 @@ const addBook = () => {
     imageCouverture: image_couverture.value
       ? `/book covers/${image_couverture.value.name}`
       : `/book covers/1.jpg`,
-  })
+  }
 
+  Service.addBookToDB(newBook).then()
+
+  // return the view
   router.push('/books')
 }
 </script>
