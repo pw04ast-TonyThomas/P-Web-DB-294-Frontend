@@ -1,9 +1,31 @@
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import Service from '@/services/service.js'
 
 const router = useRouter()
+const route = useRoute()
+// get the is of the route
+const bookId = ref<string | string[]>(route.params.id)
+
+const currentBook = ref(null)
+
+onMounted(async () => {
+  const response = await Service.getBook(bookId.value)
+  const bookData = response.data
+  currentBook.value = bookData
+
+  titre.value = bookData.titre
+  categorie.value = bookData.categorie
+  num_pages.value = bookData.nbPages
+  extrait_livre.value = bookData.extrait
+  resume.value = bookData.resume
+  nom_auteur.value = bookData.auteur.nom
+  prenom_auteur.value = bookData.auteur.prenom
+  nom_editeur.value = bookData.editeur
+  annee_edition.value = bookData.anneeEdition
+  image_couverture.value = bookData.imageCouverture
+})
 
 const categories = ['roman', 'poesie', 'theatre', 'essai', 'biographie', 'science', 'histoire']
 const titre = ref('')
@@ -16,12 +38,6 @@ const prenom_auteur = ref('')
 const nom_editeur = ref('')
 const annee_edition = ref(0)
 const image_couverture = ref(null)
-
-const props = defineProps(['id'])
-
-onMounted(() => {
-  console.log(props.id)
-})
 
 const onCoverIgmChange = (e: Event) => {
   const target = e.target as HTMLInputElement
@@ -74,7 +90,7 @@ const onCoverExtraitChange = (e: Event) => {
 const addBook = () => {
   // post the result
 
-  const newBook = {
+  const modifyBook = {
     titre: titre.value,
     categorie: categorie.value,
     nbPages: num_pages.value,
@@ -91,7 +107,8 @@ const addBook = () => {
       : `/book covers/1.jpg`,
   }
 
-  Service.addBookToDB(newBook).then()
+  // TODO : modify not add
+  Service.addBookToDB(modifyBook).then()
 
   // return the view
   router.push('/books')
@@ -161,7 +178,7 @@ const addBook = () => {
       />
     </div>
 
-    <button type="submit" class="submit_button">Ajouter le livre</button>
+    <button type="submit" class="submit_button">Modifier le livre</button>
   </form>
 </template>
 
