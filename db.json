@@ -14999,6 +14999,19 @@
       "editeur": "Lueilwitz LLC",
       "anneeEdition": 1867,
       "imageCouverture": "/book covers/3.jpg"
+    },
+    {
+      "titre": "f",
+      "categorie": "f",
+      "num_pages": 0,
+      "extrait_livre": "",
+      "resume": "f",
+      "nom_auteur": "f",
+      "prenom_auteur": "f",
+      "nom_editeur": "f",
+      "annee_edition": 0,
+      "image_couverture": "/book covers/1.jpg",
+      "id": 1001
     }
   ],
   "appreciations": [

@@ -61,14 +61,16 @@ const addBook = () => {
   axios.post('http://localhost:3000/ouvrages', {
     titre: titre.value,
     categorie: categorie.value,
-    num_pages: num_pages.value,
-    extrait_livre: extrait_livre.value ? `/extraitsLivres/${extrait_livre.value.name}` : '',
+    nbPages: num_pages.value,
+    extrait: extrait_livre.value ? `/extraitsLivres/${extrait_livre.value.name}` : '',
     resume: resume.value,
-    nom_auteur: nom_auteur.value,
-    prenom_auteur: prenom_auteur.value,
-    nom_editeur: nom_editeur.value,
-    annee_edition: annee_edition.value,
-    image_couverture: image_couverture.value
+    auteur: {
+      nom: nom_auteur.value,
+      prenom: prenom_auteur.value,
+    },
+    editeur: nom_editeur.value,
+    anneeEdition: annee_edition.value,
+    imageCouverture: image_couverture.value
       ? `/book covers/${image_couverture.value.name}`
       : `/book covers/1.jpg`,
   })
