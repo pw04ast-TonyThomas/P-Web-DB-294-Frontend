@@ -1,17 +1,19 @@
 <script lang="ts" setup>
 import starIcon from '../assets/icons/star.svg'
 import starEmptyIcon from '../assets/icons/starEmpty.svg'
-defineProps(['src', 'title', 'rating'])
+defineProps(['id', 'src', 'title', 'rating'])
 </script>
 
 <template>
   <div class="card">
-    <img :src="src" alt="" />
-    <h3>{{ title }}</h3>
-    <div class="rating">
-      <img v-for="s in Math.round(rating)" :key="s" :src="starIcon" />
-      <img v-for="s in 5 - Math.round(rating)" :key="s" :src="starEmptyIcon" />
-    </div>
+    <a :href="/book/ + id">
+      <img :src="src" alt="" />
+      <h3>{{ title }}</h3>
+      <div class="rating">
+        <img v-for="s in Math.round(rating)" :key="s" :src="starIcon" />
+        <img v-for="s in 5 - Math.round(rating)" :key="s" :src="starEmptyIcon" />
+      </div>
+    </a>
   </div>
 </template>
 
@@ -19,11 +21,21 @@ defineProps(['src', 'title', 'rating'])
 .rating > img {
   height: 2rem;
 }
-.card > img {
+.card > a > img {
   height: 14rem;
   aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 2vh;
+}
+
+.card > a {
+  display: flex;
+  place-items: center;
+  flex-direction: column;
+  gap: 1rem;
+
+  color: var(--third-2);
+  text-decoration: none;
 }
 
 .card {

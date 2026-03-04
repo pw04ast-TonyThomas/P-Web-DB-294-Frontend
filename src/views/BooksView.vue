@@ -91,6 +91,7 @@ const handleWheel = (e: WheelEvent) => {
         <CardItem
           v-for="book in GetNBooks(10, categorie)"
           :key="book.id"
+          :id="book.id"
           :src="book.imageCouverture"
           :title="book.titre"
           :rating="GetBookRating(book.id)"
