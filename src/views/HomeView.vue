@@ -27,7 +27,7 @@ onMounted(() => {
 })
 
 function GetNBooks(nb) {
-  let bookIndex = GetRandomBook()
+  const bookIndex = GetRandomBook()
   return books.value.slice(bookIndex, bookIndex + Math.round(nb))
 }
 </script>

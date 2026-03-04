@@ -5,7 +5,6 @@ import { ref, onMounted } from 'vue'
 import Service from '@/services/service.js'
 import BookCategory from '@/seeder/seeder.js'
 
-const book = ref(null)
 const books = ref(null)
 const ratings = ref(null)
 
@@ -42,7 +41,7 @@ function GetRandomBook(categorie = null) {
 
 // Returns a given number of books of a certain category, Takes the amount and the category
 function GetNBooks(nb, categorie = null) {
-  let booksToBeReturned = []
+  const booksToBeReturned = []
   for (let index = 0; index < nb; index++) {
     booksToBeReturned.push(GetRandomBook(categorie))
   }
