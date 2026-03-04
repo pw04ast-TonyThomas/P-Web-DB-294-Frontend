@@ -4,6 +4,7 @@ import { onMounted, ref } from 'vue'
 import Service from '@/services/service.js'
 import starIcon from '../assets/icons/star.svg'
 import starEmptyIcon from '../assets/icons/starEmpty.svg'
+import { GetBookRating, getComments } from '@/composable/functions'
 
 const book = ref(null)
 const ratings = ref(null)
@@ -11,15 +12,6 @@ const comments = ref(null)
 
 const props = defineProps(['id'])
 console.log(props.id)
-
-function GetBookRating(bookId) {
-  return ratings.value[ratings.value.find((rating) => rating.ouvrageId == bookId).id - 1].note
-}
-
-function getComments(bookId) {
-  if (!comments.value) return []
-  return comments.value.filter((c) => c.ouvrageId == bookId)
-}
 
 onMounted(() => {
   Service.getBook(props.id)
@@ -56,7 +48,7 @@ onMounted(() => {
       <p>Extrait: <a :href="book.extrait">lien</a></p>
       <p>Auteur: {{ book.auteur.prenom }} {{ book.auteur.nom }}</p>
       <p>Edition: {{ book.editeur }} {{ book.anneeEdition }}</p>
-      <p>Note: {{ GetBookRating(id) }} / 5</p>
+      <p>Note: {{ GetBookRating(id, ratings) }} / 5</p>
     </div>
     <h2 class="summary-header">Summary</h2>
     <p class="summary-text">{{ book.resume }}</p>
@@ -65,7 +57,11 @@ onMounted(() => {
     <a class="edit_book" :href="/modify/ + id"><img src="../assets/icons/edit.svg" /></a>
 
     <div class="comment-box">
-      <div v-for="comment in getComments(props.id)" :key="comment.id" class="comment-item">
+      <div
+        v-for="comment in getComments(props.id, comments)"
+        :key="comment.id"
+        class="comment-item"
+      >
         <p>&OpenCurlyDoubleQuote;{{ comment.contenu }}&CloseCurlyDoubleQuote;</p>
         <div class="rating">
           <img v-for="s in Math.round(comment.rating)" :key="s" :src="starIcon" />
@@ -73,7 +69,7 @@ onMounted(() => {
         </div>
       </div>
 
-      <p v-if="getComments(props.id).length === 0">No comments yet.</p>
+      <p v-if="getComments(props.id, comments).length === 0">No comments yet.</p>
     </div>
   </main>
 </template>

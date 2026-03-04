@@ -1,62 +1,13 @@
 <script setup lang="ts">
-// @ts-nocheck
+// @ts-check
 import CardItem from '@/components/CardItem.vue'
 import { ref, onMounted } from 'vue'
 import Service from '@/services/service.js'
 import BookCategory from '@/seeder/seeder.js'
+import { GetBookRating, GetNBooks, books, ratings } from '@/composable/functions'
 
-const books = ref(null)
-const ratings = ref(null)
-
-onMounted(() => {
-  Service.getBooks()
-    .then((response) => {
-      books.value = response.data
-    })
-    .catch((error) => {
-      console.log(error)
-    })
-  Service.getRatings()
-    .then((response) => {
-      ratings.value = response.data
-    })
-    .catch((error) => {
-      console.log(error)
-    })
-})
-
-// Returns a random book of a category, Takes a category
-function GetRandomBook(categorie = null) {
-  let allCategoryBooks = []
-  if (categorie) {
-    allCategoryBooks = books.value.filter((book) => {
-      return book.categorie == categorie
-    })
-    console.log('categorie : ' + categorie + ', nb of books : ' + allCategoryBooks.length)
-    const randomIndex = Math.floor(Math.random() * allCategoryBooks.length)
-    return allCategoryBooks[randomIndex]
-  }
-  return 0
-}
-
-// Returns a given number of books of a certain category, Takes the amount and the category
-function GetNBooks(nb, categorie = null) {
-  const booksToBeReturned = []
-  for (let index = 0; index < nb; index++) {
-    booksToBeReturned.push(GetRandomBook(categorie))
-  }
-  console.log('books to be returned : ' + booksToBeReturned)
-  return booksToBeReturned
-}
-
-// returns the rating of a book, Takes the book's id.
-function GetBookRating(bookId) {
-  if (!ratings.value) return 1
-
-  const rating = ratings.value.find((rating) => rating.ouvrageId == bookId)
-
-  return rating ? rating.note : 1
-}
+// const books = ref(null)
+// const ratings = ref(null)
 
 const handleWheel = (e: WheelEvent) => {
   // target is the specific list being hovered
@@ -86,7 +37,7 @@ const handleWheel = (e: WheelEvent) => {
     </ul>
     <div class="category" v-for="categorie in BookCategory" :key="categorie">
       <legend>{{ categorie }}</legend>
-      <div class="category-list" @wheel.prevent="handleWheel">
+      <div class="category-list" @wheel.prevent="handleWheel" v-if="books && categorie">
         <CardItem
           v-for="book in GetNBooks(10, categorie)"
           :key="book.id"
