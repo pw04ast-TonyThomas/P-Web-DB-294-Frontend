@@ -63,7 +63,7 @@ function GetNBooks(nb) {
       <h2>Best sellers</h2>
     </div>
     <div v-if="books" class="books">
-      <div v-for="book in GetNBooks(6)" class="book">
+      <div v-for="book in GetNBooks(6)" :key="book.id" class="book">
         <h3>{{ book.titre }}</h3>
         <img :src="book.imageCouverture" alt="" />
       </div>
