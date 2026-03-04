@@ -64,6 +64,7 @@ function createCommentaires(ouvrages, users) {
     ouvrageId: Math.round(ouvrages.length * Math.random()),
     // userId: Math.round(users.length * Math.random()),
     contenu: faker.lorem.sentence(),
+    rating: faker.number.int({ min: 1, max: 5 }),
     date: faker.date.recent().toISOString().split('T')[0],
   }))
 }
