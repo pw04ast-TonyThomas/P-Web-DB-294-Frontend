@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 import starIcon from '../assets/icons/star.svg'
 import starEmptyIcon from '../assets/icons/starEmpty.svg'
-defineProps(['id', 'src', 'title', 'rating'])
+import deleteIcon from '../assets/icons/delete.svg'
+defineProps(['id', 'src', 'title', 'rating', 'delete'])
 </script>
 
 <template>
@@ -13,6 +14,9 @@ defineProps(['id', 'src', 'title', 'rating'])
         <img v-for="s in Math.round(rating)" :key="s" :src="starIcon" />
         <img v-for="s in 5 - Math.round(rating)" :key="s" :src="starEmptyIcon" />
       </div>
+      <a href="#" v-if="$props.delete">
+        <img :src="deleteIcon" />
+      </a>
     </a>
   </div>
 </template>
@@ -21,7 +25,7 @@ defineProps(['id', 'src', 'title', 'rating'])
 .rating > img {
   height: 2rem;
 }
-.card > a > img {
+.card > * > img {
   height: 14rem;
   aspect-ratio: 1 / 1;
   object-fit: cover;
