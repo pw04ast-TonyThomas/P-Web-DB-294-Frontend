@@ -2,6 +2,8 @@
 // @ts-nocheck
 import { onMounted, ref } from 'vue'
 import Service from '@/services/service.js'
+import starIcon from '../assets/icons/star.svg'
+import starEmptyIcon from '../assets/icons/starEmpty.svg'
 
 const book = ref(null)
 const ratings = ref(null)
@@ -62,6 +64,10 @@ onMounted(() => {
     <div class="comment-box">
       <div v-for="comment in getComments(props.id)" :key="comment.id" class="comment-item">
         <p>&OpenCurlyDoubleQuote;{{ comment.contenu }}&CloseCurlyDoubleQuote;</p>
+        <div class="rating">
+          <img v-for="s in Math.round(comment.rating)" :key="s" :src="starIcon" />
+          <img v-for="s in 5 - Math.round(comment.rating)" :key="s" :src="starEmptyIcon" />
+        </div>
       </div>
 
       <p v-if="getComments(props.id).length === 0">No comments yet.</p>
@@ -127,5 +133,8 @@ onMounted(() => {
   padding: 3rem;
   border-radius: 1rem;
   box-shadow: 2px 4px 4px var(--third);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 </style>
