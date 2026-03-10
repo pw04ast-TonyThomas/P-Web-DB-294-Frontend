@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import SearchBar from './components/SearchBar.vue'
+
+// const emitTest = (emitVar: any) => console.log(`Emit test : ${emitVar}`)
 </script>
 
 <template>
@@ -15,6 +17,7 @@ import SearchBar from './components/SearchBar.vue'
         <span></span>
         <RouterLink to="/add-book">Ajouter un ouvrage</RouterLink>
       </nav>
+      <!-- <SearchBar @run-emission-func="emitTest"></SearchBar> -->
       <SearchBar></SearchBar>
     </header>
     <img class="svg top" style="grid-area: top-svg" src="./assets/waves-top.svg" alt="" />

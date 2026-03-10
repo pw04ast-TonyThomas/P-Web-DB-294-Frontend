@@ -1,5 +1,10 @@
+<script setup>
+// const emitionGaz = 6.7
+</script>
+
 <template>
   <input type="search" name="search" id="search" class="search" placeholder="search" />
+  <!-- <button @click="$emit('runEmissionFunc', emitionGaz)">emit</button> -->
 </template>
 
 <style scoped>
