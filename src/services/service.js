@@ -26,4 +26,10 @@ export default {
   addBookToDB(newBook) {
     return apiClient.post('/ouvrages/', newBook)
   },
+  updateBook(id, updatedBook) {
+    return apiClient.put(`/ouvrages/${id}`, updatedBook)
+  },
+  deleteBook(id) {
+    return apiClient.delete(`/ouvrages/${id}`)
+  },
 }
