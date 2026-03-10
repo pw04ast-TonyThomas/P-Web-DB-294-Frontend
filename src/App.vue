@@ -30,6 +30,9 @@ import SearchBar from './components/SearchBar.vue'
       <div>
         <p>Site créé par : Tony Thomas, Théophile Borboën et Gillian L'Horset</p>
       </div>
+      <div>
+        <p>Contact : thibault.martin@eduvaud.ch</p>
+      </div>
     </footer>
   </div>
 </template>
