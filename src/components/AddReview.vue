@@ -23,7 +23,7 @@ function AddReview() {
   Service.addCommentary(newCommentary).then()
 
   // return the view
-  router.push('/books')
+  window.location.reload()
 }
 </script>
 
