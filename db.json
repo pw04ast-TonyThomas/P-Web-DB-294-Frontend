@@ -2296,19 +2296,19 @@
       "imageCouverture": "/book covers/9.jpg"
     },
     {
-      "id": 154,
       "titre": "aeternus caelestis deorsum acerbitas",
       "categorie": "roman",
       "nbPages": 1189,
-      "extrait": "../../public/extraitsLivres/seed.pdf",
-      "resume": "Vos ars concedo animadverto cernuus villa alo explicabo possimus consequatur necessitatibus creo uter torqueo crur spoliatio suus carpo stillicidium curtus peccatus decimus contego arceo suasoria considero dens culpa solio cernuus tenuis adflicto ulterius quibusdam degusto combibo civitas dolorum damno basium ad teneo demum vilis cunctatio teneo cras canto et cavus ait expedita venio argentum distinctio aperte censura cedo ara ocer allatus vinitor curatio urbanus terminatio conatus animus delectus approbo summa crepusculum volutabrum.",
+      "extrait": "/extraitsLivres/undefined",
+      "resume": "J'ai changer le résumé...",
       "auteur": {
         "nom": "Roob",
         "prenom": "Johann"
       },
       "editeur": "Johnston, Rath and Waelchi",
       "anneeEdition": 1861,
-      "imageCouverture": "/book covers/44.jpg"
+      "imageCouverture": "/book covers/undefined",
+      "id": 154
     },
     {
       "id": 155,

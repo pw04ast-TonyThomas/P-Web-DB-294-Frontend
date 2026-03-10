@@ -5,8 +5,9 @@ import Service from '@/services/service.js'
 
 const router = useRouter()
 const route = useRoute()
-// get the is of the route
-const bookId = ref<string | string[]>(route.params.id)
+
+// get the id of the current book
+const bookId = ref(route.params.id)
 
 const currentBook = ref(null)
 
@@ -87,10 +88,10 @@ const onCoverExtraitChange = (e: Event) => {
   }
 }
 
-const addBook = () => {
+const modifyBook = () => {
   // post the result
 
-  const modifyBook = {
+  const modifiedBook = {
     titre: titre.value,
     categorie: categorie.value,
     nbPages: num_pages.value,
@@ -107,8 +108,10 @@ const addBook = () => {
       : `/book covers/1.jpg`,
   }
 
+  console.log(bookId.value)
+
   // TODO : modify not add
-  Service.addBookToDB(modifyBook).then()
+  Service.updateBook(bookId.value, modifiedBook).then()
 
   // return the view
   router.push('/books')
@@ -116,7 +119,7 @@ const addBook = () => {
 </script>
 
 <template>
-  <form class="add_book_form" enctype="multipart/form-data" @submit.prevent="addBook">
+  <form class="add_book_form" enctype="multipart/form-data" @submit.prevent="modifyBook">
     <label for="titre">Titre</label>
     <input type="text" v-model="titre" id="titre" class="name_input" required />
 
