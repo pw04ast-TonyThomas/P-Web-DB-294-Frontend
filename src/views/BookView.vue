@@ -5,6 +5,7 @@ import Service from '@/services/service.js'
 import starIcon from '../assets/icons/star.svg'
 import starEmptyIcon from '../assets/icons/starEmpty.svg'
 import DeleteBookForm from '@/components/DeleteBookForm.vue'
+import AddReview from '@/components/AddReview.vue'
 
 const book = ref(null)
 const ratings = ref(null)
@@ -78,6 +79,7 @@ onMounted(() => {
 
       <p v-if="getComments(props.id).length === 0">No comments yet.</p>
     </div>
+    <AddReview></AddReview>
   </main>
 </template>
 
@@ -96,6 +98,7 @@ onMounted(() => {
     'comment comment' auto
     'comment comment' auto
     'comment comment' auto
+    'form-comment form-rating' auto
     / 1fr 2fr;
 
   width: 70vw;

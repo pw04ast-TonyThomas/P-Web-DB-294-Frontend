@@ -32,4 +32,7 @@ export default {
   deleteBook(id) {
     return apiClient.delete(`/ouvrages/${id}`)
   },
+  addCommentary(commentary) {
+    return apiClient.post(`/commentaires/`, commentary)
+  },
 }

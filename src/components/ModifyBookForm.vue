@@ -108,8 +108,6 @@ const modifyBook = () => {
       : `/book covers/1.jpg`,
   }
 
-  console.log(bookId.value)
-
   // modify the book in the db
   Service.updateBook(bookId.value, modifiedBook).then()
 
@@ -119,7 +117,7 @@ const modifyBook = () => {
 </script>
 
 <template>
-  <form class="add_book_form" enctype="multipart/form-data" @submit.prevent="modifyBook">
+  <form class="add_book_form" @submit.prevent="modifyBook">
     <label for="titre">Titre</label>
     <input type="text" v-model="titre" id="titre" class="name_input" required />
 
