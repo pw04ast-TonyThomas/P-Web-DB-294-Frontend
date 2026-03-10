@@ -4,6 +4,7 @@ import { onMounted, ref } from 'vue'
 import Service from '@/services/service.js'
 import starIcon from '../assets/icons/star.svg'
 import starEmptyIcon from '../assets/icons/starEmpty.svg'
+import DeleteBookForm from '@/components/DeleteBookForm.vue'
 
 const book = ref(null)
 const ratings = ref(null)
@@ -62,8 +63,10 @@ onMounted(() => {
     <p class="summary-text">{{ book.resume }}</p>
     <h2 class="comment-header">Comment</h2>
 
-    <a class="edit_book" :href="/modify/ + id"><img src="../assets/icons/edit.svg" /></a>
-
+    <div>
+      <a class="edit_book" :href="/modify/ + id"><img src="../assets/icons/edit.svg" /></a>
+      <DeleteBookForm></DeleteBookForm>
+    </div>
     <div class="comment-box">
       <div v-for="comment in getComments(props.id)" :key="comment.id" class="comment-item">
         <p>&OpenCurlyDoubleQuote;{{ comment.contenu }}&CloseCurlyDoubleQuote;</p>

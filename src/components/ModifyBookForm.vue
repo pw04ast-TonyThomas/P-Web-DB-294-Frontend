@@ -110,7 +110,7 @@ const modifyBook = () => {
 
   console.log(bookId.value)
 
-  // TODO : modify not add
+  // modify the book in the db
   Service.updateBook(bookId.value, modifiedBook).then()
 
   // return the view
