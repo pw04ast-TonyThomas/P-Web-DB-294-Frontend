@@ -13,9 +13,7 @@ function search() {
     books.value = response.data
     router.push({
       name: 'books',
-      query: {
-        data: JSON.stringify(books.value),
-      },
+      query: { data: JSON.stringify(response.data) },
     })
   })
 }
