@@ -122,12 +122,11 @@ const modifyBook = () => {
     <input type="text" v-model="titre" id="titre" class="name_input" required />
 
     <label for="categorie">Categorie</label>
-    <input id="categroie_list" list="categorie" v-model="categorie" required />
-    <datalist id="categorie">
+    <select id="categorie" v-model="categorie" class="categorie_select" required>
       <option v-for="categorie in categories" :key="categorie" :value="categorie">
         {{ categorie }}
       </option>
-    </datalist>
+    </select>
 
     <label for="num_pages">Nombre de pages</label>
     <input type="number" id="num_pages" class="num_input" v-model="num_pages" required />
@@ -199,7 +198,8 @@ const modifyBook = () => {
 
 .add_book_form > input,
 .add_book_form > textarea,
-.add_book_form > div > input {
+.add_book_form > div > input,
+.add_book_form > select {
   resize: none;
   background-color: var(--main);
   border: 2px, solid;
@@ -210,6 +210,10 @@ const modifyBook = () => {
 }
 
 /* style of the inputs */
+
+.categorie_select {
+  width: 18%;
+}
 
 .num_input {
   width: 50px;
