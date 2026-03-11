@@ -11,7 +11,9 @@ import SearchBar from './components/SearchBar.vue'
     <div class="banner-right"></div>
     <header style="grid-area: header">
       <div>
-        <img src="/src/assets/logosite.svg" alt="Logo" style="width: 70px" />
+        <RouterLink to="/" style="align-items: center; display: flex"
+          ><img src="/src/assets/logosite.svg" alt="Logo" style="width: 70px"
+        /></RouterLink>
         <nav>
           <RouterLink to="/">L&CloseCurlyQuote;0ctet Littéraire</RouterLink>
           <span></span>

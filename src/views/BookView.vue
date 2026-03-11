@@ -19,7 +19,7 @@ function GetBookRating(bookId) {
 
   const rating = ratings.value.find((rating) => rating.ouvrageId == bookId)
 
-  return rating ? rating.note : 1
+  return rating ? rating.note : 'No rating'
 }
 
 function getComments(bookId) {

@@ -14970,6 +14970,21 @@
       "annee_edition": 0,
       "image_couverture": "/book covers/1.jpg",
       "id": 1001
+    },
+    {
+      "titre": "ouinonbof",
+      "categorie": "essai",
+      "nbPages": 67,
+      "extrait": "/extraitsLivres/C-294-ALL01-Introduction-vue-js-3.pdf",
+      "resume": "awdwad",
+      "auteur": {
+        "nom": "awdaw",
+        "prenom": "awdawd"
+      },
+      "editeur": "wadad",
+      "anneeEdition": 67,
+      "imageCouverture": "/book covers/corrupted.jpg",
+      "id": 1002
     }
   ],
   "appreciations": [

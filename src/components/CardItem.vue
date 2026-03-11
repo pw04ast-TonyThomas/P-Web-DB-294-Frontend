@@ -10,7 +10,7 @@ defineProps(['id', 'src', 'title', 'rating', 'delete'])
     <a :href="/book/ + id">
       <img :src="src" alt="" />
       <h3>{{ title }}</h3>
-      <div class="rating">
+      <div class="rating" v-if="rating">
         <img v-for="s in Math.round(rating)" :key="s" :src="starIcon" />
         <img v-for="s in 5 - Math.round(rating)" :key="s" :src="starEmptyIcon" />
       </div>
