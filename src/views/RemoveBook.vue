@@ -32,7 +32,6 @@ function GetRandomBook(categorie = null) {
     allCategoryBooks = books.value.filter((book) => {
       return book.categorie == categorie
     })
-    console.log('categorie : ' + categorie + ', nb of books : ' + allCategoryBooks.length)
     const randomIndex = Math.floor(Math.random() * allCategoryBooks.length)
     return allCategoryBooks[randomIndex]
   }
@@ -45,7 +44,6 @@ function GetNBooks(nb, categorie = null) {
   for (let index = 0; index < nb; index++) {
     booksToBeReturned.push(GetRandomBook(categorie))
   }
-  console.log('books to be returned : ' + booksToBeReturned)
   return booksToBeReturned
 }
 

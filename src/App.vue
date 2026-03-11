@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import SearchBar from './components/SearchBar.vue'
-
-// const emitTest = (emitVar: any) => console.log(`Emit test : ${emitVar}`)
 </script>
 
 <template>

@@ -8,7 +8,6 @@ import router from '@/router'
 const query = ref('')
 const books = ref()
 function search() {
-  console.log(books.value)
   Service.searchBook(query.value).then((response: AxiosResponse) => {
     books.value = response.data
     router.push({

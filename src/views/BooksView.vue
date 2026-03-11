@@ -15,7 +15,6 @@ const ratings = ref(null)
 
 onMounted(() => {
   if (route.query.data) searchedBooks.value = JSON.parse(route.query.data)
-  console.log(searchedBooks.value)
   Service.getBooks()
     .then((response) => (books.value = response.data))
     .catch((error) => console.log(error))
@@ -36,7 +35,6 @@ function GetRandomBook(categorie = null) {
     allCategoryBooks = books.value.filter((book) => {
       return book.categorie == categorie
     })
-    console.log('categorie : ' + categorie + ', nb of books : ' + allCategoryBooks.length)
     const randomIndex = Math.floor(Math.random() * allCategoryBooks.length)
     return allCategoryBooks[randomIndex]
   }
@@ -49,7 +47,6 @@ function GetNBooks(nb, categorie = null) {
   for (let index = 0; index < nb; index++) {
     booksToBeReturned.push(GetRandomBook(categorie))
   }
-  console.log('books to be returned : ' + booksToBeReturned)
   return booksToBeReturned
 }
 
