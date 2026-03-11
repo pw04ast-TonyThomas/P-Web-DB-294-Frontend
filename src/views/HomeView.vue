@@ -1,34 +1,32 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import Service from '@/services/service.js'
+import CardItem from '@/components/CardItem.vue'
 
 const book = ref(null)
-const books = ref(null)
-
-function GetRandomBook() {
-  return Math.round(Math.random() * 1000)
-}
+const books = ref([])
+const latestBooks = ref(null)
+const ratings = ref(null)
 
 onMounted(() => {
-  Service.getBook(GetRandomBook())
-    .then((response) => {
-      book.value = response.data
-    })
-    .catch((error) => {
-      console.log(error)
-    })
   Service.getBooks()
-    .then((response) => {
-      books.value = response.data
-    })
-    .catch((error) => {
-      console.log(error)
-    })
+    .then((response) => (books.value = response.data))
+    .catch((error) => console.error(error))
+  Service.getRatings()
+    .then((response) => (ratings.value = response.data))
+    .catch((error) => console.error(error))
+  Service.getLatestBooks(5)
+    .then((response) => (latestBooks.value = response.data))
+    .catch((error) => console.error(error))
 })
 
-function GetNBooks(nb) {
-  const bookIndex = GetRandomBook()
-  return books.value.slice(bookIndex, bookIndex + Math.round(nb))
+// returns the rating of a book, Takes the book's id.
+function GetBookRating(bookId) {
+  if (!ratings.value) return 1
+
+  const rating = ratings.value.find((rating) => rating.ouvrageId == bookId)
+
+  return rating ? rating.note : 1
 }
 </script>
 
@@ -62,11 +60,15 @@ function GetNBooks(nb) {
     <div>
       <h2>Best sellers</h2>
     </div>
-    <div v-if="books" class="books">
-      <div v-for="book in GetNBooks(6)" :key="book.id" class="book">
-        <h3>{{ book.titre }}</h3>
-        <img :src="book.imageCouverture" alt="" />
-      </div>
+    <div v-if="books && ratings" class="books">
+      <CardItem
+        v-for="book in latestBooks"
+        :key="book.id"
+        :id="book.id"
+        :src="book.imageCouverture"
+        :title="book.titre"
+        :rating="GetBookRating(book.id)"
+      ></CardItem>
     </div>
   </main>
 </template>
@@ -91,6 +93,7 @@ function GetNBooks(nb) {
   display: grid;
   gap: 3vw;
   grid-template: '. .' '. .' '. .'/ 1fr 1fr 1fr;
+  margin: auto;
 }
 
 .book {
