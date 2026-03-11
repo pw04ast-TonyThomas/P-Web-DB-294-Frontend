@@ -76,7 +76,6 @@ onMounted(() => {
           <img v-for="s in 5 - Math.round(comment.rating)" :key="s" :src="starEmptyIcon" />
         </div>
       </div>
-
       <p v-if="getComments(props.id).length === 0">No comments yet.</p>
     </div>
     <AddReview></AddReview>

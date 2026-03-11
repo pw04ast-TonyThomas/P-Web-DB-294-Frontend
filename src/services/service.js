@@ -35,4 +35,7 @@ export default {
   addCommentary(commentary) {
     return apiClient.post(`/commentaires/`, commentary)
   },
+  getLatestBooks(nb) {
+    return apiClient.get(`/ouvrages?_sort=id&_order=desc&_limit=${nb}`)
+  },
 }
