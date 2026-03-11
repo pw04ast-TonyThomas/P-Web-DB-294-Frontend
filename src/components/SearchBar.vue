@@ -1,5 +1,37 @@
+<script setup lang="ts">
+import { onMounted, ref } from 'vue'
+//@ts-expect-error c'est du js !
+import Service from '@/services/service.js'
+import type { AxiosResponse } from 'axios'
+import router from '@/router'
+
+const query = ref('')
+const books = ref()
+function search() {
+  console.log(books.value)
+  Service.searchBook(query.value).then((response: AxiosResponse) => {
+    books.value = response.data
+    router.push({
+      name: 'books',
+      query: {
+        data: JSON.stringify(books.value),
+      },
+    })
+  })
+}
+</script>
+
 <template>
-  <input type="search" name="search" id="search" class="search" placeholder="search" />
+  <form @submit.prevent="search()">
+    <input
+      v-model="query"
+      type="search"
+      name="search"
+      id="search"
+      class="search"
+      placeholder="search"
+    />
+  </form>
 </template>
 
 <style scoped>

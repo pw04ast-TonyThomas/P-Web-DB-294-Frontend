@@ -5,17 +5,21 @@ import { ref, onMounted } from 'vue'
 import Service from '@/services/service.js'
 import BookCategory from '@/seeder/seeder.js'
 
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
+
 const books = ref(null)
+const searchedBooks = ref(null)
 const ratings = ref(null)
 
 onMounted(() => {
+  if (route.query.data) searchedBooks.value = JSON.parse(route.query.data)
+  console.log(searchedBooks.value)
   Service.getBooks()
-    .then((response) => {
-      books.value = response.data
-    })
-    .catch((error) => {
-      console.log(error)
-    })
+    .then((response) => (books.value = response.data))
+    .catch((error) => console.log(error))
+
   Service.getRatings()
     .then((response) => {
       ratings.value = response.data
@@ -84,11 +88,25 @@ const handleWheel = (e: WheelEvent) => {
         <a href="">Supprimer un ouvrage</a>
       </li>
     </ul>
-    <div class="category" v-for="categorie in BookCategory" :key="categorie">
-      <legend>{{ categorie }}</legend>
-      <div class="category-list" @wheel.prevent="handleWheel">
+    <div v-if="!searchedBooks">
+      <div class="category" v-for="categorie in BookCategory" :key="categorie">
+        <legend>{{ categorie }}</legend>
+        <div class="category-list" @wheel.prevent="handleWheel">
+          <CardItem
+            v-for="book in GetNBooks(10, categorie)"
+            :key="book.id"
+            :id="book.id"
+            :src="book.imageCouverture"
+            :title="book.titre"
+            :rating="GetBookRating(book.id)"
+          ></CardItem>
+        </div>
+      </div>
+    </div>
+    <div class="category" v-else-if="searchedBooks">
+      <div class="search-result" @wheel.prevent="handleWheel">
         <CardItem
-          v-for="book in GetNBooks(10, categorie)"
+          v-for="book in searchedBooks"
           :key="book.id"
           :id="book.id"
           :src="book.imageCouverture"
@@ -115,6 +133,12 @@ const handleWheel = (e: WheelEvent) => {
   ::-webkit-scrollbar {
     display: none;
   }
+}
+
+.search-result {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 1rem;
 }
 
 .category {

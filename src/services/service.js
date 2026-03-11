@@ -26,4 +26,7 @@ export default {
   addBookToDB(newBook) {
     return apiClient.post('/ouvrages/', newBook)
   },
+  searchBook(query) {
+    return apiClient.get(`/ouvrages/?titre_like=${query}`)
+  },
 }

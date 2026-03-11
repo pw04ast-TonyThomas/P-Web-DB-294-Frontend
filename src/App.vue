@@ -18,7 +18,7 @@ import SearchBar from './components/SearchBar.vue'
       <SearchBar></SearchBar>
     </header>
     <img class="svg top" style="grid-area: top-svg" src="./assets/waves-top.svg" alt="" />
-    <RouterView />
+    <RouterView :key="$route.fullPath" />
     <img class="svg bot" style="grid-area: bot-svg" src="./assets/waves-bot.svg" alt="" />
     <footer style="grid-area: footer">
       <p>&copy; L&CloseCurlyQuote;0ctet Littéraire</p>
