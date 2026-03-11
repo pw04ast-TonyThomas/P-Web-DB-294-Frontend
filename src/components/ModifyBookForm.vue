@@ -1,9 +1,32 @@
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import Service from '@/services/service.js'
 
 const router = useRouter()
+const route = useRoute()
+
+// get the id of the current book
+const bookId = ref(route.params.id)
+
+const currentBook = ref(null)
+
+onMounted(async () => {
+  const response = await Service.getBook(bookId.value)
+  const bookData = response.data
+  currentBook.value = bookData
+
+  titre.value = bookData.titre
+  categorie.value = bookData.categorie
+  num_pages.value = bookData.nbPages
+  extrait_livre.value = bookData.extrait
+  resume.value = bookData.resume
+  nom_auteur.value = bookData.auteur.nom
+  prenom_auteur.value = bookData.auteur.prenom
+  nom_editeur.value = bookData.editeur
+  annee_edition.value = bookData.anneeEdition
+  image_couverture.value = bookData.imageCouverture
+})
 
 const categories = ['roman', 'poesie', 'theatre', 'essai', 'biographie', 'science', 'histoire']
 const titre = ref('')
@@ -16,12 +39,6 @@ const prenom_auteur = ref('')
 const nom_editeur = ref('')
 const annee_edition = ref(0)
 const image_couverture = ref(null)
-
-const props = defineProps(['id'])
-
-onMounted(() => {
-  console.log(props.id)
-})
 
 const onCoverIgmChange = (e: Event) => {
   const target = e.target as HTMLInputElement
@@ -71,10 +88,10 @@ const onCoverExtraitChange = (e: Event) => {
   }
 }
 
-const addBook = () => {
+const modifyBook = () => {
   // post the result
 
-  const newBook = {
+  const modifiedBook = {
     titre: titre.value,
     categorie: categorie.value,
     nbPages: num_pages.value,
@@ -91,7 +108,8 @@ const addBook = () => {
       : `/book covers/1.jpg`,
   }
 
-  Service.addBookToDB(newBook).then()
+  // modify the book in the db
+  Service.updateBook(bookId.value, modifiedBook).then()
 
   // return the view
   router.push('/books')
@@ -99,17 +117,16 @@ const addBook = () => {
 </script>
 
 <template>
-  <form class="add_book_form" enctype="multipart/form-data" @submit.prevent="addBook">
+  <form class="add_book_form" @submit.prevent="modifyBook">
     <label for="titre">Titre</label>
     <input type="text" v-model="titre" id="titre" class="name_input" required />
 
     <label for="categorie">Categorie</label>
-    <input id="categroie_list" list="categorie" v-model="categorie" required />
-    <datalist id="categorie">
+    <select id="categorie" v-model="categorie" class="categorie_select" required>
       <option v-for="categorie in categories" :key="categorie" :value="categorie">
         {{ categorie }}
       </option>
-    </datalist>
+    </select>
 
     <label for="num_pages">Nombre de pages</label>
     <input type="number" id="num_pages" class="num_input" v-model="num_pages" required />
@@ -161,7 +178,7 @@ const addBook = () => {
       />
     </div>
 
-    <button type="submit" class="submit_button">Ajouter le livre</button>
+    <button type="submit" class="submit_button">Modifier le livre</button>
   </form>
 </template>
 
@@ -181,7 +198,8 @@ const addBook = () => {
 
 .add_book_form > input,
 .add_book_form > textarea,
-.add_book_form > div > input {
+.add_book_form > div > input,
+.add_book_form > select {
   resize: none;
   background-color: var(--main);
   border: 2px, solid;
@@ -192,6 +210,10 @@ const addBook = () => {
 }
 
 /* style of the inputs */
+
+.categorie_select {
+  width: 18%;
+}
 
 .num_input {
   width: 50px;

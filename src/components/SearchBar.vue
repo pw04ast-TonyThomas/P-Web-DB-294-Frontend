@@ -19,6 +19,7 @@ function search() {
     })
   })
 }
+// const emitionGaz = 6.7
 </script>
 
 <template>
@@ -32,6 +33,8 @@ function search() {
       placeholder="search"
     />
   </form>
+
+  <!-- <button @click="$emit('runEmissionFunc', emitionGaz)">emit</button> -->
 </template>
 
 <style scoped>

@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import SearchBar from './components/SearchBar.vue'
+
+// const emitTest = (emitVar: any) => console.log(`Emit test : ${emitVar}`)
 </script>
 
 <template>
@@ -13,25 +15,35 @@ import SearchBar from './components/SearchBar.vue'
         <span></span>
         <RouterLink to="/books">Ouvrages</RouterLink>
         <span></span>
-        <RouterLink to="/add-book">addbook</RouterLink>
+        <RouterLink to="/add-book">Ajouter un ouvrage</RouterLink>
       </nav>
+      <!-- <SearchBar @run-emission-func="emitTest"></SearchBar> -->
       <SearchBar></SearchBar>
     </header>
     <img class="svg top" style="grid-area: top-svg" src="./assets/waves-top.svg" alt="" />
     <RouterView :key="$route.fullPath" />
     <img class="svg bot" style="grid-area: bot-svg" src="./assets/waves-bot.svg" alt="" />
     <footer style="grid-area: footer">
-      <p>&copy; L&CloseCurlyQuote;0ctet Littéraire</p>
+      <div>
+        <p>&copy; L&CloseCurlyQuote;0ctet Littéraire</p>
+      </div>
+      <div>
+        <p>Site créé par : Tony Thomas, Théophile Borboën et Gillian L'Horset</p>
+      </div>
+      <div>
+        <p>Contact : thibault.martin@eduvaud.ch</p>
+      </div>
     </footer>
   </div>
-  <!--
-        <p style="font-family: JetBrainsMono">test</p>
-        <p style="font-family: JetBrainsMono-bold">test</p>
-        <p style="font-family: JetBrainsMono-ExtraBold">test</p>
-  -->
 </template>
 
 <style scoped>
+footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .wrapper {
   min-height: 100%;
   position: relative;

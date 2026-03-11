@@ -79,13 +79,7 @@ const handleWheel = (e: WheelEvent) => {
     <h1>Ouvrages</h1>
     <ul class="nav">
       <li>
-        <a href="">Ajouter un ouvrage</a>
-      </li>
-      <li>
-        <a href="">Modifier un ouvrage</a>
-      </li>
-      <li>
-        <a href="">Supprimer un ouvrage</a>
+        <a href="/add-book">Ajouter un ouvrage</a>
       </li>
     </ul>
     <div v-if="!searchedBooks">
