@@ -10,13 +10,17 @@ import SearchBar from './components/SearchBar.vue'
     <div class="banner-left"></div>
     <div class="banner-right"></div>
     <header style="grid-area: header">
-      <nav>
-        <RouterLink to="/">L&CloseCurlyQuote;0ctet Littéraire</RouterLink>
-        <span></span>
-        <RouterLink to="/books">Ouvrages</RouterLink>
-        <span></span>
-        <RouterLink to="/add-book">Ajouter un ouvrage</RouterLink>
-      </nav>
+      <div>
+        <img src="/src/assets/logosite.svg" alt="Logo" style="width: 70px" />
+        <nav>
+          <RouterLink to="/">L&CloseCurlyQuote;0ctet Littéraire</RouterLink>
+          <span></span>
+          <RouterLink to="/books">Ouvrages</RouterLink>
+          <span></span>
+          <RouterLink to="/add-book">Ajouter un ouvrage</RouterLink>
+        </nav>
+      </div>
+
       <!-- <SearchBar @run-emission-func="emitTest"></SearchBar> -->
       <SearchBar></SearchBar>
     </header>
@@ -64,14 +68,38 @@ header {
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 
+  padding: 0 100px;
   background: var(--secondary);
   border: 4px solid var(--main);
   box-sizing: border-box;
 
   gap: 1rem;
+  & > nav {
+    display: flex;
+    gap: 1rem;
+    & a {
+      color: var(--third);
+      text-decoration: none;
+    }
+
+    & a:hover {
+      text-decoration: underline;
+    }
+
+    & span::after {
+      content: '○';
+    }
+  }
+}
+
+header div {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
   & > nav {
     display: flex;
     gap: 1rem;

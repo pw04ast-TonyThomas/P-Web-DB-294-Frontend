@@ -32,6 +32,10 @@ onMounted(() => {
     })
 })
 
+setInterval(() => {
+  console.log(searchedBooks.value)
+}, 1000)
+
 // Returns a random book of a category, Takes a category
 function GetRandomBook(categorie = null) {
   let allCategoryBooks = []
@@ -99,6 +103,9 @@ const handleWheel = (e: WheelEvent) => {
           ></CardItem>
         </div>
       </div>
+    </div>
+    <div v-else-if="searchedBooks.length == 0">
+      <p>Aucun livre trouvé !</p>
     </div>
     <div class="category" v-else-if="searchedBooks">
       <div class="search-result" @wheel.prevent="handleWheel">

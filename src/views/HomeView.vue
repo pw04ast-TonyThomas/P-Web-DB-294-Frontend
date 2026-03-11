@@ -91,7 +91,7 @@ function GetBookRating(bookId) {
 
 .books {
   display: grid;
-  gap: 3vw;
+  gap: 1rem;
   grid-template: '. .' '. .' '. .'/ 1fr 1fr 1fr;
   margin: auto;
 }
