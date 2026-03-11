@@ -15,7 +15,11 @@ const props = defineProps(['id'])
 console.log(props.id)
 
 function GetBookRating(bookId) {
-  return ratings.value[ratings.value.find((rating) => rating.ouvrageId == bookId).id - 1].note
+  if (!ratings.value) return 1
+
+  const rating = ratings.value.find((rating) => rating.ouvrageId == bookId)
+
+  return rating ? rating.note : 1
 }
 
 function getComments(bookId) {
