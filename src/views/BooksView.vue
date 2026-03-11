@@ -14,7 +14,10 @@ const searchedBooks = ref(null)
 const ratings = ref(null)
 
 onMounted(() => {
-  if (route.query.data) searchedBooks.value = JSON.parse(route.query.data)
+  const stateData = window.history.state?.booksData
+  if (stateData) {
+    searchedBooks.value = stateData
+  }
   console.log(searchedBooks.value)
   Service.getBooks()
     .then((response) => (books.value = response.data))
