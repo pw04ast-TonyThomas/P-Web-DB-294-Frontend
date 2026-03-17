@@ -11,7 +11,7 @@ const route = useRoute()
 
 const books = ref(null)
 const searchedBooks = ref(null)
-const ratings = ref(null)
+const comments = ref(null)
 
 onMounted(() => {
   if (route.query.data) searchedBooks.value = JSON.parse(route.query.data)
@@ -19,9 +19,9 @@ onMounted(() => {
     .then((response) => (books.value = response.data))
     .catch((error) => console.log(error))
 
-  Service.getRatings()
+  Service.getComments()
     .then((response) => {
-      ratings.value = response.data
+      comments.value = response.data
     })
     .catch((error) => {
       console.log(error)
@@ -47,16 +47,35 @@ function GetNBooks(nb, categorie = null) {
   for (let index = 0; index < nb; index++) {
     booksToBeReturned.push(GetRandomBook(categorie))
   }
+  // console.log('books to be returned : ' + booksToBeReturned)
   return booksToBeReturned
 }
 
 // returns the rating of a book, Takes the book's id.
-function GetBookRating(bookId) {
-  if (!ratings.value) return 1
+function GetBookRatings(bookId) {
+  if (!comments.value) return 1
 
-  const rating = ratings.value.find((rating) => rating.ouvrageId == bookId)
+  let commentRatings = []
+  let commentsForBook = []
 
-  return rating ? rating.note : null
+  // Gets all the the comments that are from the bookId
+  commentsForBook = comments.value.filter((comment) => {
+    return comment.ouvrageId == bookId
+  })
+
+  // gets all the ratings for the comments
+  commentsForBook.forEach((comment) => {
+    // console.log('rating : ' + comment.rating)
+    commentRatings.push(comment.rating)
+  })
+
+  // Gets the comment avg
+  const commentAvg =
+    Math.round(commentRatings.reduce((sum, currentValue) => sum + currentValue, 0) / commentRatings.length)
+
+  // console.log("comment Average: " + commentAvg)
+
+  return commentAvg ? commentAvg : null
 }
 
 const handleWheel = (e: WheelEvent) => {
@@ -72,7 +91,7 @@ const handleWheel = (e: WheelEvent) => {
 </script>
 
 <template>
-  <main v-if="BookCategory && books && ratings">
+  <main v-if="BookCategory && books && comments">
     <h1>Ouvrages</h1>
     <ul class="nav">
       <li>
@@ -95,7 +114,7 @@ const handleWheel = (e: WheelEvent) => {
             :id="book.id"
             :src="book.imageCouverture"
             :title="book.titre"
-            :rating="GetBookRating(book.id)"
+            :rating="GetBookRatings(book.id)"
           ></CardItem>
         </div>
       </div>
@@ -108,7 +127,7 @@ const handleWheel = (e: WheelEvent) => {
           :id="book.id"
           :src="book.imageCouverture"
           :title="book.titre"
-          :rating="GetBookRating(book.id)"
+          :rating="GetBookRatings(book.id)"
         ></CardItem>
       </div>
     </div>

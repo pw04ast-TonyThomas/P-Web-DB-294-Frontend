@@ -3,17 +3,16 @@ import { ref, onMounted } from 'vue'
 import Service from '@/services/service.js'
 import CardItem from '@/components/CardItem.vue'
 
-const book = ref(null)
 const books = ref([])
 const latestBooks = ref(null)
-const ratings = ref(null)
+const comments = ref(null)
 
 onMounted(() => {
   Service.getBooks()
     .then((response) => (books.value = response.data))
     .catch((error) => console.error(error))
-  Service.getRatings()
-    .then((response) => (ratings.value = response.data))
+  Service.getComments()
+    .then((response) => (comments.value = response.data))
     .catch((error) => console.error(error))
   Service.getLatestBooks(5)
     .then((response) => (latestBooks.value = response.data))
@@ -21,12 +20,30 @@ onMounted(() => {
 })
 
 // returns the rating of a book, Takes the book's id.
-function GetBookRating(bookId) {
-  if (!ratings.value) return 1
+function GetBookRatings(bookId) {
+  if (!comments.value) return 1
 
-  const rating = ratings.value.find((rating) => rating.ouvrageId == bookId)
+  let commentRatings = []
+  let commentsForBook = []
 
-  return rating ? rating.note : 1
+  // Gets all the the comments that are from the bookId
+  commentsForBook = comments.value.filter((comment) => {
+    return comment.ouvrageId == bookId
+  })
+
+  // gets all the ratings for the comments
+  commentsForBook.forEach((comment) => {
+    // console.log('rating : ' + comment.rating)
+    commentRatings.push(comment.rating)
+  })
+
+  // Gets the comment avg
+  const commentAvg =
+    Math.round(commentRatings.reduce((sum, currentValue) => sum + currentValue, 0) / commentRatings.length)
+
+  // console.log("comment Average: " + commentAvg)
+
+  return commentAvg ? commentAvg : null
 }
 </script>
 
@@ -58,16 +75,16 @@ function GetBookRating(bookId) {
       </div>
     </div>
     <div>
-      <h2>Best sellers</h2>
+      <h2>Recent books</h2>
     </div>
-    <div v-if="books && ratings" class="books">
+    <div v-if="books && comments" class="books">
       <CardItem
         v-for="book in latestBooks"
         :key="book.id"
         :id="book.id"
         :src="book.imageCouverture"
         :title="book.titre"
-        :rating="GetBookRating(book.id)"
+        :rating="GetBookRatings(book.id)"
       ></CardItem>
     </div>
   </main>

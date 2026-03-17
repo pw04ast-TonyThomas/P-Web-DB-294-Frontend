@@ -8,17 +8,35 @@ import DeleteBookForm from '@/components/DeleteBookForm.vue'
 import AddReview from '@/components/AddReview.vue'
 
 const book = ref(null)
-const ratings = ref(null)
 const comments = ref(null)
 
 const props = defineProps(['id'])
 
-function GetBookRating(bookId) {
-  if (!ratings.value) return 1
+// returns the rating of a book, Takes the book's id.
+function GetBookRatings(bookId) {
+  if (!comments.value) return 1
 
-  const rating = ratings.value.find((rating) => rating.ouvrageId == bookId)
+  let commentRatings = []
+  let commentsForBook = []
 
-  return rating ? rating.note : 'No rating'
+  // Gets all the the comments that are from the bookId
+  commentsForBook = comments.value.filter((comment) => {
+    return comment.ouvrageId == bookId
+  })
+
+  // gets all the ratings for the comments
+  commentsForBook.forEach((comment) => {
+    // console.log('rating : ' + comment.rating)
+    commentRatings.push(comment.rating)
+  })
+
+  // Gets the comment avg
+  const commentAvg =
+    Math.round(commentRatings.reduce((sum, currentValue) => sum + currentValue, 0) / commentRatings.length)
+
+  // console.log("comment Average: " + commentAvg)
+
+  return commentAvg ? commentAvg : null
 }
 
 function getComments(bookId) {
@@ -30,13 +48,6 @@ onMounted(() => {
   Service.getBook(props.id)
     .then((response) => {
       book.value = response.data
-    })
-    .catch((error) => {
-      console.log(error)
-    })
-  Service.getRatings()
-    .then((response) => {
-      ratings.value = response.data
     })
     .catch((error) => {
       console.log(error)
@@ -61,7 +72,7 @@ onMounted(() => {
       <p>Extrait: <a :href="book.extrait">lien</a></p>
       <p>Auteur: {{ book.auteur.prenom }} {{ book.auteur.nom }}</p>
       <p>Edition: {{ book.editeur }} {{ book.anneeEdition }}</p>
-      <p>Note: {{ GetBookRating(id) }} / 5</p>
+      <p>Note: {{ GetBookRatings(id) }} / 5</p>
     </div>
     <h2 class="summary-header">Summary</h2>
     <p class="summary-text">{{ book.resume }}</p>

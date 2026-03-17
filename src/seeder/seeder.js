@@ -49,14 +49,14 @@ function createOuvrages(count = 1000) {
 //   }))
 // }
 
-function createAppreciations(ouvrages, users) {
-  return ouvrages.map((ouvrage, i) => ({
-    id: i + 1,
-    ouvrageId: Math.round(ouvrages.length * Math.random()),
-    // userId: Math.round(users.length * Math.random()),
-    note: faker.number.int({ min: 1, max: 5 }),
-  }))
-}
+// function createAppreciations(ouvrages, users) {
+//   return ouvrages.map((ouvrage, i) => ({
+//     id: i + 1,
+//     ouvrageId: Math.round(ouvrages.length * Math.random()),
+//     // userId: Math.round(users.length * Math.random()),
+//     note: faker.number.int({ min: 1, max: 5 }),
+//   }))
+// }
 
 function createCommentaires(ouvrages, users) {
   return ouvrages.map((ouvrage, i) => ({
@@ -72,13 +72,13 @@ function createCommentaires(ouvrages, users) {
 async function seed() {
   const ouvrages = createOuvrages(1000)
   // const users = createUsers(1000)
-  const appreciations = createAppreciations(ouvrages /*users*/)
+  // const appreciations = createAppreciations(ouvrages /*users*/)
   const commentaires = createCommentaires(ouvrages /*users*/)
 
   const db = {
     ouvrages,
-    /*users,*/
-    appreciations,
+    // users,
+    // appreciations,
     commentaires,
   }
 
