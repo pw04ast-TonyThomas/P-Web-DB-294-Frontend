@@ -36,7 +36,7 @@ function GetRandomBook(categorie = null) {
     allCategoryBooks = books.value.filter((book) => {
       return book.categorie == categorie
     })
-    console.log('categorie : ' + categorie + ', nb of books : ' + allCategoryBooks.length)
+    // console.log('categorie : ' + categorie + ', nb of books : ' + allCategoryBooks.length)
     const randomIndex = Math.floor(Math.random() * allCategoryBooks.length)
     return allCategoryBooks[randomIndex]
   }
@@ -49,7 +49,7 @@ function GetNBooks(nb, categorie = null) {
   for (let index = 0; index < nb; index++) {
     booksToBeReturned.push(GetRandomBook(categorie))
   }
-  console.log('books to be returned : ' + booksToBeReturned)
+  // console.log('books to be returned : ' + booksToBeReturned)
   return booksToBeReturned
 }
 
@@ -60,18 +60,22 @@ function GetBookRatings(bookId) {
   let commentRatings = []
   let commentsForBook = []
 
+  // Gets all the the comments that are from the bookId
   commentsForBook = comments.value.filter((comment) => {
     return comment.ouvrageId == bookId
   })
-  console.log(commentsForBook)
 
+  // gets all the ratings for the comments
   commentsForBook.forEach((comment) => {
-    console.log('rating : ' + comment.rating)
+    // console.log('rating : ' + comment.rating)
     commentRatings.push(comment.rating)
   })
 
+  // Gets the comment avg
   const commentAvg =
-    commentRatings.reduce((sum, currentValue) => sum + currentValue, 0) / commentRatings.length
+    Math.round(commentRatings.reduce((sum, currentValue) => sum + currentValue, 0) / commentRatings.length)
+
+  // console.log("comment Average: " + commentAvg)
 
   return commentAvg ? commentAvg : null
 }
