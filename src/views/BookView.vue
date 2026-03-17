@@ -11,7 +11,6 @@ const book = ref(null)
 const comments = ref(null)
 
 const props = defineProps(['id'])
-console.log(props.id)
 
 // returns the rating of a book, Takes the book's id.
 function GetBookRatings(bookId) {
