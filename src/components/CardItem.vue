@@ -2,7 +2,7 @@
 import starIcon from '../assets/icons/star.svg'
 import starEmptyIcon from '../assets/icons/starEmpty.svg'
 import deleteIcon from '../assets/icons/delete.svg'
-defineProps(['id', 'src', 'title', 'rating', 'delete'])
+defineProps(['id', 'src', 'title', 'rating', 'delete', 'auteur'])
 </script>
 
 <template>
@@ -14,6 +14,8 @@ defineProps(['id', 'src', 'title', 'rating', 'delete'])
         <img v-for="s in Math.round(rating)" :key="s" :src="starIcon" />
         <img v-for="s in 5 - Math.round(rating)" :key="s" :src="starEmptyIcon" />
       </div>
+        <p v-if="auteur && auteur.nom">Auteur :  {{ auteur.nom }} {{ auteur.prenom }}</p>
+        <p v-else>Auteur : Inconnu</p>
       <a href="#" v-if="$props.delete">
         <img :src="deleteIcon" />
       </a>

@@ -115,6 +115,7 @@ const handleWheel = (e: WheelEvent) => {
             :src="book.imageCouverture"
             :title="book.titre"
             :rating="GetBookRatings(book.id)"
+            :auteur="book.auteur"
           ></CardItem>
         </div>
       </div>

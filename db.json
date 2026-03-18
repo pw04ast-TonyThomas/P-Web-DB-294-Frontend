@@ -14999,6 +14999,51 @@
       "editeur": "Miller - Homenick",
       "anneeEdition": 2019,
       "imageCouverture": "/book covers/41.jpg"
+    },
+    {
+      "titre": "Le Seigneur des anneaux - La Fraternité de l'Anneau-Édition reliée et illustrée Tome 1",
+      "categorie": "roman",
+      "nbPages": 544,
+      "extrait": "/extraitsLivres/extrait-seigneur-des-anneaux.pdf",
+      "resume": "Dans un paisible village du Comté, le jeune Frodo est sur le point de recevoir un cadeau qui changera sa vie à jamais : l'Anneau de Pouvoir. Forgé par Sauron au coeur de la Montagne du Feu, on le croyait perdu depuis qu'un homme le lui avait arraché avant de le chasser hors du monde. À présent, de noirs présages s'étendent à nouveau sur la Terre du Milieu, les créatures maléfiques se multiplient et, dans les Montagnes de Brume, les Orques traquent les Nains. L'ennemi veut récupérer son bien afin de dominer le monde.",
+      "auteur": {
+        "nom": "Tolkien",
+        "prenom": "J.R.R"
+      },
+      "editeur": "Bourgois",
+      "anneeEdition": 2025,
+      "imageCouverture": "/book covers/Le-Seigneur-des-Anneaux-T1.jpg",
+      "id": 1001
+    },
+    {
+      "titre": "Harry Potter - Illustrations par Karl James Mountford : Harry Potter et la Coupe de Feu - Édition illustrée interactive",
+      "categorie": "roman",
+      "nbPages": 608,
+      "extrait": "/extraitsLivres/harry-potter-tome-1.pdf",
+      "resume": "Sublimes illustrations en couleurs et huit prouesses d'ingénierie papier interactives: une édition unique du quatrième tome de la saga Harry Potter et un précieux cadeau pour les fans de tous âges.\nHarry Potter veut échapper aux terribles Dursley et se rendre à la Coupe du Monde de Quidditch avec Hermione, Ron et la famille Weasley. Il veut rêver de la belle Cho Chang, et peut-être lui avouer ses sentiments. Il veut en apprendre plus sur cette compétition entre les trois plus grandes écoles de sorcellerie d'Europe.",
+      "auteur": {
+        "nom": "Rowling",
+        "prenom": " J.K."
+      },
+      "editeur": "Gallimard jeunesse",
+      "anneeEdition": 2025,
+      "imageCouverture": "/book covers/Harry-Potter-et-la-Coupe-de-Feu-Edition-illustree-interactive.jpg",
+      "id": 1002
+    },
+    {
+      "titre": "Astérix chez les Helvètes",
+      "categorie": "roman",
+      "nbPages": 48,
+      "extrait": "",
+      "resume": "Le gouverneur de la province de Rennes pratique activement le « recel et abus de biens sociaux avec enrichissement personnel », c'est-à-dire qu'il profite de sa situation pour s'enrichir. Aussi, quand Rome envoie un questeur pour vérifier ses comptes, il l'empoisonne. Mais le questeur fait appel à Panoramix, qui a besoin pour pouvoir le soigner de faire une potion à base d'Edelweiss. Voilà donc Astérix et Obélix partis en Suisse, engagés dans une course contre la montre pour cueillir et rapporter une de ces fleurs. Ils devront aussi échapper aux légionnaires que le gouverneur de Genève, ami du gouverneur de Rennes, a lancé à leurs trousses.",
+      "auteur": {
+        "nom": "Uderzo",
+        "prenom": "Albert "
+      },
+      "editeur": " Hachette Asterix",
+      "anneeEdition": 2005,
+      "imageCouverture": "/book covers/Asterix-Asterix-chez-les-Helvetes-n-16.jpg",
+      "id": 1003
     }
   ],
   "commentaires": [
@@ -22001,6 +22046,20 @@
       "contenu": "Spectaculum altus arcus tero infit.",
       "rating": 2,
       "date": "2026-03-10"
+    },
+    {
+      "ouvrageId": 1001,
+      "contenu": "Très cool :)",
+      "rating": 5,
+      "date": "2026-03-18",
+      "id": 1001
+    },
+    {
+      "ouvrageId": 1002,
+      "contenu": "Pas cool :(",
+      "rating": 1,
+      "date": "2026-03-18",
+      "id": 1002
     }
   ]
 }
